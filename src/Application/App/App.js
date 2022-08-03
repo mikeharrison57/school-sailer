@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { fetchSchoolsInfo } from './api-call';
+import { fetchSchoolsInfo } from '../api-call';
 import './App.css';
 
 class App extends Component {
