@@ -1,4 +1,4 @@
-export default stateArray = [
+const states = [
   'Alabama:AL',
   'Alaska:AK',
   'Arizona:AZ',
@@ -50,3 +50,10 @@ export default stateArray = [
   'Wisconsin:WI',
   'Wyoming:WY'
 ];
+
+export default stateArrays = states.reduce((newStateArrs, state) => {
+  const splitStates = state.split(':')
+  newStateArrs[0].push(splitStates[0])
+  newStateArrs[1].push(splitStates[1])
+  return newStateArrs
+}, [ [], [] ])
