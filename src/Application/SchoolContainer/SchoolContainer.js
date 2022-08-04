@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SchoolCard from '../SchoolCard/SchoolCard'
 
 const SchoolContainer = ({ lists }) => {
 
   const schoolCards = lists.map((list) => {
-    console.log(list.latest.cost.avg_net_price.overall)
+    // console.log(list.latest.cost.avg_net_price.overall)
     return (
       <SchoolCard 
         key={list.id} 
@@ -18,8 +19,11 @@ const SchoolContainer = ({ lists }) => {
     <section>
       {schoolCards}
     </section>
-
   )
 }
 
 export default SchoolContainer;
+
+SchoolContainer.propTypes = {
+  lists: PropTypes.array.isRequired
+};
