@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const SchoolCard = ({ school, costPerYear }) => {
-  // const averageCostPerYear =
-
   return (
     <article>
       <img></img>

@@ -20,7 +20,7 @@ class App extends Component {
         this.setState({ error: true })
       })
   }
-
+  
   render() {
     return (
       <main className="App">
