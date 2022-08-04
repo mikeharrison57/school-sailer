@@ -5,7 +5,7 @@ import SchoolCard from '../SchoolCard/SchoolCard'
 const SchoolContainer = ({ lists }) => {
 
   const schoolCards = lists.map((list) => {
-    // console.log(list.latest.cost.avg_net_price.overall)
+    console.log(list.latest.cost.avg_net_price.overall)
     return (
       <SchoolCard 
         key={list.id} 
