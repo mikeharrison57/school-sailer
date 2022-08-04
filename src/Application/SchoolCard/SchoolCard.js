@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './SchoolCard.css'
 
 const SchoolCard = ({ school, costPerYear }) => {
   return (
-    <article>
+    <article className='school-card'>
       <img></img>
       <h3>Name: {school.name} </h3>
       <p>City: {school.city}, {school.state} </p>

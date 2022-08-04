@@ -37,7 +37,7 @@ const StateSelectionForm = ({ getSchoolsByState }) => {
     <form className='state-form' onSubmit={event => submitStateInput(event)}>
       <input
         type='text'
-        // placeHolder='Name'
+        placeholder='Name'
         onChange={event => setName(event.target.value)}
         required
       />

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SchoolCard from '../SchoolCard/SchoolCard'
+import './SchoolContainer.css'
 
 const SchoolContainer = ({ lists }) => {
 
@@ -16,7 +17,7 @@ const SchoolContainer = ({ lists }) => {
   })
   
   return (
-    <section>
+    <section className='school-container'>
       {schoolCards}
     </section>
   )
