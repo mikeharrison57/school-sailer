@@ -46,7 +46,7 @@ const StateSelectionForm = ({ getSchoolsByState }) => {
       </select>
       <button type='submit'>SUBMIT</button>
     </form>
-      <p>{`Welcome ${name}! Set sail on a school adventure today ⛵️`}</p>
+      {name && state ? <p>{`Welcome ${name}! Set sail on a school adventure today ⛵️`}</p> : <p></p>}
     </section>
   )
 }
