@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { states } from './state-arrays';
+import './StateSelectionForm.css';
 
 const StateSelectionForm = ({ getSchoolsByState }) => {
 
@@ -20,12 +21,11 @@ const StateSelectionForm = ({ getSchoolsByState }) => {
   const submitStateInput = event => {
     event.preventDefault();
     getSchoolsByState(state);
-    clearInput();
+    // clearInput();
   }
 
   const clearInput = () => {
     setName('');
-    setState('');
   }
 
   // useEffect((event) => {
@@ -33,7 +33,7 @@ const StateSelectionForm = ({ getSchoolsByState }) => {
   // }, [state])
 
   return (
-    <section>
+    <section className='form-section'>
     <form className='state-form' onSubmit={event => submitStateInput(event)}>
       <input
         type='text'
@@ -41,7 +41,7 @@ const StateSelectionForm = ({ getSchoolsByState }) => {
         onChange={event => setName(event.target.value)}
         required
       />
-      <select onChange={event => setState(event.target.value)} required>
+      <select value={state} onChange={event => setState(event.target.value)} required>
         {selectState()}
       </select>
       <button type='submit'>SUBMIT</button>

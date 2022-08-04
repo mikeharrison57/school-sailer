@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { fetchSchoolsInfo } from '../api-call';
+import Navbar from '../Navbar/Navbar';
 import StateSelectionForm from '../StateForm/StateSelectionForm';
 import SchoolContainer from '../SchoolContainer/SchoolContainer'
 import './App.css';
@@ -24,7 +25,7 @@ class App extends Component {
   render() {
     return (
       <main className="App">
-        <h1>School Sailor</h1>
+          <Navbar />
           <StateSelectionForm getSchoolsByState = {this.getSchoolsByState} />
           <SchoolContainer lists={this.state.lists} />
       </main>
