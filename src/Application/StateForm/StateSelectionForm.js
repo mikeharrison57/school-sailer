@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { stateArrays } from './state-arrays';
+import { states } from './state-arrays';
 
 const StateSelectionForm = ({ getSchoolsByState }) => {
 
@@ -7,9 +7,10 @@ const StateSelectionForm = ({ getSchoolsByState }) => {
   const [state, setState] = useState('')
 
   const selectState = () => {
-    const stateOptions = stateArrays[1].stateAbbs.map((stateAbb) => {
+    const stateOptions = states.map((state) => {
+      const splitStates = state.split(':')
       return (
-        <option value={stateAbb}>{stateAbb}</option>
+        <option value={splitStates[1]}>{splitStates[0]}</option>
       )
     })
     return stateOptions
