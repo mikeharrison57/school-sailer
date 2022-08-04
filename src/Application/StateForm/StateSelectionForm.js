@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { states } from './state-arrays';
 
 const StateSelectionForm = ({ getSchoolsByState }) => {
@@ -19,6 +20,12 @@ const StateSelectionForm = ({ getSchoolsByState }) => {
   const submitStateInput = event => {
     event.preventDefault();
     getSchoolsByState(state);
+    clearInput();
+  }
+
+  const clearInput = () => {
+    setName('');
+    setState('');
   }
 
   // useEffect((event) => {
@@ -45,3 +52,7 @@ const StateSelectionForm = ({ getSchoolsByState }) => {
 }
 
 export default StateSelectionForm;
+
+StateSelectionForm.propTypes = {
+  getSchoolsByState: PropTypes.func.isRequired
+};
