@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SchoolCard = ({ school }) => {
+const SchoolCard = ({ school, costPerYear }) => {
   // const averageCostPerYear =
 
   return (
@@ -8,7 +8,7 @@ const SchoolCard = ({ school }) => {
       <img></img>
       <h3>Name: {school.name} </h3>
       <p>City: {school.city}, {school.state} </p>
-      <p>Average Cost of Attendance Per Year:  </p>
+      {costPerYear && <p>Average Cost of Attendance Per Year: ${costPerYear}</p>}
       <a href={school.school_url}>Website</a>
     </article>
   )

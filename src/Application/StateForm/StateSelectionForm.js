@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { states } from './state-arrays';
 
 const StateSelectionForm = ({ getSchoolsByState }) => {
@@ -20,6 +20,10 @@ const StateSelectionForm = ({ getSchoolsByState }) => {
     event.preventDefault();
     getSchoolsByState(state);
   }
+
+  // useEffect((event) => {
+  //   submitStateInput(event)
+  // }, [state])
 
   return (
     <section>
