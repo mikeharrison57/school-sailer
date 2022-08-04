@@ -10,7 +10,7 @@ const StateSelectionForm = ({ getSchoolsByState }) => {
     const stateOptions = states.map((state) => {
       const splitStates = state.split(':')
       return (
-        <option value={splitStates[1]}>{splitStates[0]}</option>
+        <option key={Math.random()} value={splitStates[1]}>{splitStates[0]}</option>
       )
     })
     return stateOptions
@@ -38,7 +38,6 @@ const StateSelectionForm = ({ getSchoolsByState }) => {
       <p>{`Welcome ${name}! Set sail on a school adventure today ⛵️`}</p>
     </section>
   )
-
 }
 
 export default StateSelectionForm;

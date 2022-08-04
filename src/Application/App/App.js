@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { fetchSchoolsInfo } from '../api-call';
-import StateSelectionForm from '../StateForm/StateSelectionForm'
+import StateSelectionForm from '../StateForm/StateSelectionForm';
+import SchoolContainer from '../SchoolContainer/SchoolContainer'
 import './App.css';
 
 class App extends Component {
   state = {
-    schools: [],
+    lists: [],
     error: false
   }
 
   getSchoolsByState = (state) => {
     fetchSchoolsInfo(state)
       .then(data => {
-        console.log(data.results)
-        this.setState({ schools: data.results })
+        this.setState({ lists: data.results })
       })
       .catch((error) => {
         console.log(error)
@@ -25,9 +25,8 @@ class App extends Component {
     return (
       <main className="App">
         <h1>School Sailor</h1>
-        <section>
           <StateSelectionForm getSchoolsByState = {this.getSchoolsByState} />
-        </section>
+          <SchoolContainer lists={this.state.lists} />
       </main>
     );
   }
