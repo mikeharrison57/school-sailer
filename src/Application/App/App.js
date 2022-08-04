@@ -1,24 +1,34 @@
 import React, { Component } from 'react';
 import { fetchSchoolsInfo } from '../api-call';
+import StateSelectionForm from '../StateForm/StateSelectionForm'
 import './App.css';
 
 class App extends Component {
   state = {
-    schools: []
+    schools: [],
+    error: false
   }
 
-  componentDidMount() {
-    fetchSchoolsInfo()
-      .then((data) => {
-        this.setState({schools: data.results})
+  getSchoolsByState = (state) => {
+    fetchSchoolsInfo(state)
+      .then(data => {
+        console.log(data.results)
+        this.setState({ schools: data.results })
+      })
+      .catch((error) => {
+        console.log(error)
+        this.setState({ error: true })
       })
   }
 
   render() {
     return (
-      <div className="App">
+      <main className="App">
         <h1>School Sailor</h1>
-      </div>
+        <section>
+          <StateSelectionForm getSchoolsByState = {this.getSchoolsByState} />
+        </section>
+      </main>
     );
   }
 }

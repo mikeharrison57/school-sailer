@@ -51,9 +51,14 @@ const states = [
   'Wyoming:WY'
 ];
 
-export default stateArrays = states.reduce((newStateArrs, state) => {
+const stateArrays = states.reduce((newStateArrs, state) => {
   const splitStates = state.split(':')
-  newStateArrs[0].push(splitStates[0])
-  newStateArrs[1].push(splitStates[1])
+  newStateArrs[0].stateNames.push(splitStates[0])
+  newStateArrs[1].stateAbbs.push(splitStates[1])
   return newStateArrs
-}, [ [], [] ])
+}, [ 
+  {stateNames: []}, 
+  {stateAbbs: []}
+  ]);
+
+export { stateArrays }
