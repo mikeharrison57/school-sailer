@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { states } from './state-arrays';
+import { Link } from 'react-router-dom';
+import './StateSelectionForm.css';
 
 const StateSelectionForm = ({ getSchoolsByState }) => {
 
-  const [name, setName] = useState('')
-  const [state, setState] = useState('')
+  const [name, setName] = useState('');
+  const [state, setState] = useState('');
 
   const selectState = () => {
     const stateOptions = states.map((state) => {
@@ -16,32 +19,37 @@ const StateSelectionForm = ({ getSchoolsByState }) => {
     return stateOptions
     }
 
-  const submitStateInput = event => {
-    event.preventDefault();
+  const submitStateInput = () => {
     getSchoolsByState(state);
   }
 
-  // useEffect((event) => {
-  //   submitStateInput(event)
-  // }, [state])
+  // const clearInput = () => {
+  //   setName('');
+  // }
 
   return (
-    <section>
-    <form className='state-form' onSubmit={event => submitStateInput(event)}>
-      <input
-        type='text'
-        // placeHolder='Name'
-        onChange={event => setName(event.target.value)}
-        required
-      />
-      <select onChange={event => setState(event.target.value)} required>
-        {selectState()}
-      </select>
-      <button type='submit'>SUBMIT</button>
-    </form>
-      <p>{`Welcome ${name}! Set sail on a school adventure today ⛵️`}</p>
+    <section className='form-section'>
+        <form className='state-form'>
+          <input
+            type='text'
+            placeholder='Name'
+            onChange={event => setName(event.target.value)}
+            required
+          />
+          <select value={state} onChange={event => setState(event.target.value)} required>
+            {selectState()}
+          </select>
+          <Link to={`/${state}`}>
+            <button onClick={() => submitStateInput()}>SUBMIT</button>
+          </Link>
+        </form>
+        {name && state ? <p>{`Welcome ${name}! Set sail on a school adventure today ⛵️`}</p> : <p></p>}
     </section>
   )
 }
 
 export default StateSelectionForm;
+
+StateSelectionForm.propTypes = {
+  getSchoolsByState: PropTypes.func.isRequired
+};
