@@ -9,7 +9,7 @@ const SchoolDetailPage = ({ schoolName, lists }) => {
   const [loading, setLoading] = useState(true);
 
   const getSchool = async () => {
-    const resp = await fetchIndividualSchool(schoolName)
+    fetchIndividualSchool(schoolName)
       .then((data) => {
         console.log(data.results[0])
         setSchool({
@@ -17,26 +17,16 @@ const SchoolDetailPage = ({ schoolName, lists }) => {
           ...individualSchool
         })
       })
-    // console.log(resp.results)
-    console.log('setstate', 'line 18')
-  }
+    }
   
-  //   fetchIndividualSchool(schoolName)
-  //   .then(data => {
-  //     setSchool({ 
-  //       ...individualSchool,
-  //       ...data.results[0]
-  //     })
-  //   })
-
   useEffect(() => {
     getSchool();
-    // clearList()
-  }, [schoolName], [])
+  }, [schoolName])
 
-  // useEffect(() => {
-  //   getSchool();
-  // }, [])
+  // const schoolCosts = {
+  //   totalAvgPerYear: individualSchool.latest.cost.avg_net_price.overall,
+  // }
+
   if (!individualSchool.school) {
     return (
       <h2>LOADING...</h2>
@@ -44,9 +34,8 @@ const SchoolDetailPage = ({ schoolName, lists }) => {
   } else {
     return (
       <>
-      {/* {individualSchool === undefined ? <h2>LOADING...</h2> : */}
         <section className='school-detail-content'>
-          {console.log(individualSchool.school)}
+          {console.log(individualSchool.latest.cost.roomboard.oncampus)}
           <header className='school-header'>
             <h2>{schoolName}</h2>
             {/* <img></img> */}
@@ -62,13 +51,20 @@ const SchoolDetailPage = ({ schoolName, lists }) => {
             </article>
             <article className='cost-info'>
               {/* <img></img> */}
+              <p>Average Costs:</p>
               <ul>
-                <li>Cost Info:</li>
+                {individualSchool.latest.cost.tuition.in_state ? <li>Tuition: ${individualSchool.latest.cost.tuition.in_state}</li> 
+                : <li>Tuition: Currently Unavailable</li>}
+                {individualSchool.latest.cost.booksupply ? <li>Books: ${individualSchool.latest.cost.booksupply}</li> 
+                : <li>Books: Currently Unavailable</li>}
+                 {individualSchool.latest.cost.roomboard.oncampus? <li>Campus Housing: ${individualSchool.latest.cost.roomboard.oncampus}</li> 
+                : <li>Campus Housing: Currently Unavailable</li>}
               </ul>
             </article>
             <article className='stats'>
+              <p>Statistics:</p>
               <ul>
-                <li>Stats:</li>
+                <li>Graduation Rate:</li>
               </ul>
             </article>
           </section>

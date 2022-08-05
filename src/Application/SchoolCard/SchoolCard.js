@@ -10,7 +10,7 @@ const SchoolCard = ({ school, costPerYear }) => {
         <img></img>
         <h3>Name: {school.name} </h3>
         <p>City: {school.city}, {school.state} </p>
-        {costPerYear && <p>Average Cost of Attendance Per Year: ${costPerYear}</p>}
+        {costPerYear ? <p>Average Cost of Attendance Per Year: ${costPerYear}</p> : <p>Average Cost of Attendance Per Year: Currently Unavailable</p>}
         {/* <a href={school.school_url}>Website</a> */}
       </article>
     </Link>

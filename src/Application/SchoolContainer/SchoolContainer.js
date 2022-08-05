@@ -34,7 +34,7 @@ const SchoolContainer = ({ usState, lists }) => {
         <SchoolCard 
           key={Math.random()} 
           school={list.latest.school} 
-          costPerYear={list.latest.cost.avg_net_price.overall}
+          costPerYear={list.latest.cost.attendance.academic_year}
         />
       )
     })

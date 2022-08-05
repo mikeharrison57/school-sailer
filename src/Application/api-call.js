@@ -16,8 +16,7 @@ const fetchIndividualSchool = async schoolName => {
   if (!response.ok) {
     throw new Error(response.statusText)
   }
-  const responseJson = await response.json()
-  console.log(response) 
+  const responseJson = await response.json();
   return responseJson
 }
 
