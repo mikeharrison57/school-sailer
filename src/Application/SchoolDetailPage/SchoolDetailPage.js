@@ -1,7 +1,21 @@
 import React, { useState } from 'react';
 
-const SchoolDetailPage = ({ listId }) => {
-  console.log(listId)
+const SchoolDetailPage = ({ schoolName, lists }) => {
+
+  const [school, setSchool] = useState({});
+
+  // const getSchool = () => {
+    const selectedSchool = lists.find((list) => {
+      // console.log(list.latest.school.name)
+      return list.latest.school.name === schoolName
+    })
+    console.log(selectedSchool)
+    // setSchool( school => ({
+  //     ...school,
+  //     ...selectedSchool
+  //   }));
+  // }
+// console.log(selectedSchool)
   return (
     <section className='school-detail-page'>
       <header className='school-header'>

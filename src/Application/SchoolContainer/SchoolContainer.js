@@ -8,8 +8,8 @@ const SchoolContainer = ({ lists }) => {
   const schoolCards = lists.map((list) => {
     return (
       <SchoolCard 
-        key={list.id} 
-        id={list.id}
+        key={Math.random()} 
+        // id={list.latest.school.name}
         school={list.latest.school} 
         costPerYear={list.latest.cost.avg_net_price.overall}
       />

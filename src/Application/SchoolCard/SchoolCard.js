@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import './SchoolCard.css'
 import { Link } from 'react-router-dom';
 
-const SchoolCard = ({ school, costPerYear, id }) => {
+const SchoolCard = ({ school, costPerYear }) => {
   return (
-    <Link to={`${school.state}/${id}`}>
+    <Link to={`${school.state}/${school.name}`}>
       <article className='school-card'>
         <img></img>
         <h3>Name: {school.name} </h3>
@@ -21,6 +21,5 @@ export default SchoolCard;
 
 SchoolCard.propTypes = {
   school: PropTypes.object.isRequired,
-  costPerYear: PropTypes.number,
-  id: PropTypes.number.isRequired
+  costPerYear: PropTypes.number
 };

@@ -36,8 +36,8 @@ class App extends Component {
           <Route exact path='/:state' render={() => {
             return <SchoolContainer lists={this.state.lists} />
            }}/>
-          <Route exact path="/:state/:id" render={() => {
-            return <SchoolDetailPage lists={this.state.lists} />
+          <Route exact path="/:state/:schoolName" render={(match) => {
+            return <SchoolDetailPage schoolName={match.match.params.schoolName} lists={this.state.lists} />
           }}/>
       </main>
     );
