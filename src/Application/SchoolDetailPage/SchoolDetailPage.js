@@ -1,23 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const SchoolDetailPage = ({ schoolName, lists }) => {
 
   const [school, setSchool] = useState({});
 
-  // const getSchool = () => {
-    const selectedSchool = lists.find((list) => {
-      // console.log(list.latest.school.name)
-      return list.latest.school.name === schoolName
-    })
-    console.log(selectedSchool)
-    // setSchool( school => ({
-  //     ...school,
-  //     ...selectedSchool
-  //   }));
-  // }
-// console.log(selectedSchool)
+  const getSchool = () => {
+    const selectedSchool = lists.find(list => list.latest.school.name === schoolName);
+    const updatedSchool = {...selectedSchool};
+    setSchool( school => ({
+      ...school,
+      ...updatedSchool
+    }));
+  }
+
+  useEffect(() => {
+    getSchool();
+  }, [lists, schoolName])
+
+  
   return (
     <section className='school-detail-page'>
+      {console.log(school)}
       <header className='school-header'>
         <h2>School Name:</h2>
         {/* <img></img> */}
