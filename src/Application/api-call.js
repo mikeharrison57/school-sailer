@@ -11,14 +11,14 @@ const fetchSchoolsInfo = state => {
     })
 }
 
-const fetchIndividualSchool = schoolName => {
-  return fetch(`${primaryUrl}school.name=${schoolName}&api_key=${secureKey}`)
-    .then((response) => {
-      if (!response.ok) {
-        throw Error(response.statusText)
-      }
-      return response.json()
-    })
+const fetchIndividualSchool = async schoolName => {
+  const response = await fetch(`${primaryUrl}school.name=${schoolName}&api_key=${secureKey}`)
+  if (!response.ok) {
+    throw new Error(response.statusText)
+  }
+  const responseJson = await response.json()
+  console.log(response) 
+  return responseJson
 }
 
 export { fetchSchoolsInfo, fetchIndividualSchool }
