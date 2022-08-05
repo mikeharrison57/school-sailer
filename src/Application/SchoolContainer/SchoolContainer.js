@@ -4,23 +4,29 @@ import { fetchSchoolsInfo } from '../api-call';
 import SchoolCard from '../SchoolCard/SchoolCard'
 import './SchoolContainer.css'
 
-const SchoolContainer = ({ usState }) => {
+const SchoolContainer = ({ usState, lists }) => {
 
   const [stateInfo, setStateInfo] = useState([]);
+  // const [error, setError] = useState('');
 
   const maintainStateInfo = () => {
     fetchSchoolsInfo(usState)
       .then(data => {
         setStateInfo([ 
-          ...stateInfo,
-          ...data.results
+          ...data.results,
+          ...stateInfo
         ])
       })
     }
     
   useEffect(() => {
     maintainStateInfo();
-  }, [usState])
+    clearStateInfo();
+  }, [usState, lists])
+
+  const clearStateInfo = () => {
+    setStateInfo([]);
+  }
 
   const returnSchoolCards = () => {
     const schoolCards = stateInfo.map((list) => {

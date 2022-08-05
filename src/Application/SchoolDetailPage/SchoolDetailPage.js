@@ -1,38 +1,41 @@
 import React, { useEffect, useState } from 'react';
+import { fetchIndividualSchool } from '../api-call';
 import './SchoolDetailPage.css';
 
 const SchoolDetailPage = ({ schoolName, lists }) => {
 
-  const [list, setList] = useState({});
+  const [individualSchool, setSchool] = useState({});
+  const [error, setError] = useState();
 
   const getSchool = () => {
-    const selectedList = lists.find(list => list.latest.school.name === schoolName);
-    const updatedList = {...selectedList};
-    setList( list => ({
-      ...list,
-      ...updatedList
-    }));
+    fetchIndividualSchool(schoolName)
+    .then(data => {
+      setSchool([ 
+        ...individualSchool,
+        ...data.results
+      ])
+    })
   }
   
   useEffect(() => {
     getSchool();
-    // clearList()
-  }, [lists, schoolName])
+    clearList()
+  }, [schoolName])
 
-  // const clearList = () => {
-  //   setList({})
-  // }
+  const clearList = () => {
+    setSchool({})
+  }
 
   return (
     <>
     {/* {list && */}
       <section className='school-detail-content'>
-        {/* {console.log(list.school.city)} */}
+        {console.log(individualSchool.school.city)}
         <header className='school-header'>
           <h2>{schoolName}</h2>
           {/* <img></img> */}
-          {/* <p>{`${list.school.city}, ${list.school.state}`}</p> */}
-          {/* <a href={list.school.school_url}>{list.school.school_url}</a> */}
+          {/* <p>{`${individualSchool.school.city}, ${individualSchool.school.state}`}</p> */}
+          {/* <a href={individualSchool.school.school_url}>{individualSchool.school.school_url}</a> */}
         </header>
         <section className='primary-info'>
           <article className='degree-categories'>

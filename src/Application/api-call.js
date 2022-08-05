@@ -12,7 +12,7 @@ const fetchSchoolsInfo = state => {
 }
 
 const fetchIndividualSchool = schoolName => {
-  return fetch(`${primaryUrl}school.state=${schoolName}&api_key=${secureKey}`)
+  return fetch(`${primaryUrl}school.name=${schoolName}&api_key=${secureKey}`)
     .then((response) => {
       if (!response.ok) {
         throw Error(response.statusText)
@@ -21,4 +21,4 @@ const fetchIndividualSchool = schoolName => {
     })
 }
 
-export { fetchSchoolsInfo }
+export { fetchSchoolsInfo, fetchIndividualSchool }

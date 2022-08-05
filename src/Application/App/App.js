@@ -10,16 +10,14 @@ import './App.css';
 class App extends Component {
   state = {
     lists: [],
-    error: false,
-    usState: 'CO'
+    error: false
   }
 
   getSchoolsByState = (state) => {
     fetchSchoolsInfo(state)
       .then(data => {
         this.setState({ 
-            lists: data.results,
-            // usState: data.results[0].latest.school.state
+            lists: data.results
          })
       })
       .catch((error) => {
