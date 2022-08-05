@@ -19,7 +19,7 @@ class App extends Component {
       .then(data => {
         this.setState({ 
             lists: data.results,
-            usState: data.results[0].latest.school.state
+            // usState: data.results[0].latest.school.state
          })
       })
       .catch((error) => {
@@ -33,8 +33,9 @@ class App extends Component {
       <main className="App">
           <Navbar />
           <StateSelectionForm getSchoolsByState = {this.getSchoolsByState} />
-          <Route exact path='/:state' render={() => {
-            return <SchoolContainer lists={this.state.lists} />
+          <Route exact path='/:state' render={(match) => {
+            console.log(match.match.params.state)
+            return <SchoolContainer usState={match.match.params.state}  lists={this.state.lists} />
            }}/>
           <Route exact path="/:state/:schoolName" render={(match) => {
             return <SchoolDetailPage schoolName={match.match.params.schoolName} lists={this.state.lists} />
