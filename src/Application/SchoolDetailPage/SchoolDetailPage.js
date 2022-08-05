@@ -1,3 +1,4 @@
+import { queryAllByPlaceholderText } from '@testing-library/react';
 import React, { useEffect, useState } from 'react';
 import { fetchIndividualSchool } from '../api-call';
 import './SchoolDetailPage.css';
@@ -23,9 +24,24 @@ const SchoolDetailPage = ({ schoolName, lists }) => {
     getSchool();
   }, [schoolName])
 
-  // const schoolCosts = {
-  //   totalAvgPerYear: individualSchool.latest.cost.avg_net_price.overall,
-  // }
+  const filterSchoolPrograms = () => {
+    const filteredPrograms = individualSchool.latest.programs.cip_4_digit.reduce((progArr, program) => {
+      if (!progArr.includes(program.title)) {
+        progArr.push(program.title)
+      }
+      return progArr
+    }, [])
+    return filteredPrograms
+  }
+  
+  const getSchoolPrograms = () => {
+    const listedSchoolPrograms = filterSchoolPrograms().map((program) => {
+      return (
+        <li>{program}</li>
+      )
+    })
+    return listedSchoolPrograms
+  }
 
   if (!individualSchool.school) {
     return (
@@ -35,7 +51,7 @@ const SchoolDetailPage = ({ schoolName, lists }) => {
     return (
       <>
         <section className='school-detail-content'>
-          {console.log(individualSchool.latest.cost.roomboard.oncampus)}
+          {console.log(individualSchool.latest.programs.cip_4_digit)}
           <header className='school-header'>
             <h2>{schoolName}</h2>
             {/* <img></img> */}
@@ -46,7 +62,8 @@ const SchoolDetailPage = ({ schoolName, lists }) => {
             <article className='degree-categories'>
               {/* <img></img> */}
               <ul>
-                <li>Degree Categories:</li>
+                <p>Programs Offered:</p>
+                {getSchoolPrograms()}
               </ul>
             </article>
             <article className='cost-info'>
@@ -64,7 +81,10 @@ const SchoolDetailPage = ({ schoolName, lists }) => {
             <article className='stats'>
               <p>Statistics:</p>
               <ul>
-                <li>Graduation Rate:</li>
+                {individualSchool.latest.admissions.admission_rate.overall ? <li>Admission Rate: {individualSchool.latest.admissions.admission_rate.overall * 100} %</li> 
+                : <li>Admission Rate: Currently Unavailable</li>}
+                {/* <li>Retention Rate:</li> */}
+                
               </ul>
             </article>
           </section>
