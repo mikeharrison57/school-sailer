@@ -18,12 +18,6 @@ const SchoolContainer = ({ usState }) => {
       })
     }
     
-    // const listInfo = [...lists];
-    // setStateInfo([
-    //   ...stateInfo,
-    //   ...listInfo
-    // ]);
-
   useEffect(() => {
     maintainStateInfo();
   }, [usState])
