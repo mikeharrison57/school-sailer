@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import SchoolCard from '../SchoolCard/SchoolCard'
 import './SchoolContainer.css'
 
-const SchoolContainer = ({ lists, usState }) => {
-  console.log(usState)
+const SchoolContainer = ({ lists }) => {
 
   const schoolCards = lists.map((list) => {
     return (
       <SchoolCard 
         key={list.id} 
+        id={list.id}
         school={list.latest.school} 
         costPerYear={list.latest.cost.avg_net_price.overall}
       />

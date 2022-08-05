@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { states } from './state-arrays';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './StateSelectionForm.css';
 
 const StateSelectionForm = ({ getSchoolsByState }) => {
 
-  const [name, setName] = useState('')
-  const [state, setState] = useState('')
-  console.log(state, 'state, form line 23')
+  const [name, setName] = useState('');
+  const [state, setState] = useState('');
 
   const selectState = () => {
     const stateOptions = states.map((state) => {
@@ -21,17 +20,12 @@ const StateSelectionForm = ({ getSchoolsByState }) => {
     }
 
   const submitStateInput = () => {
-    // event.preventDefault();
     getSchoolsByState(state);
   }
 
   // const clearInput = () => {
   //   setName('');
   // }
-
-  // useEffect((event) => {
-  //   submitStateInput(event)
-  // }, [state])
 
   return (
     <section className='form-section'>
@@ -45,9 +39,9 @@ const StateSelectionForm = ({ getSchoolsByState }) => {
           <select value={state} onChange={event => setState(event.target.value)} required>
             {selectState()}
           </select>
-          <NavLink to={`/${state}`}>
-                <button onClick={() => submitStateInput()}>SUBMIT</button>
-          </NavLink>
+          <Link to={`/${state}`}>
+            <button onClick={() => submitStateInput()}>SUBMIT</button>
+          </Link>
         </form>
         {name && state ? <p>{`Welcome ${name}! Set sail on a school adventure today ⛵️`}</p> : <p></p>}
     </section>

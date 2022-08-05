@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-const SchoolDetailPage = () => {
-
+const SchoolDetailPage = ({ listId }) => {
+  console.log(listId)
   return (
     <section className='school-detail-page'>
       <header className='school-header'>

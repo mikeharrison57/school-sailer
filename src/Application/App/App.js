@@ -15,14 +15,12 @@ class App extends Component {
   }
 
   getSchoolsByState = (state) => {
-    console.log('anything')
     fetchSchoolsInfo(state)
       .then(data => {
         this.setState({ 
             lists: data.results,
             usState: data.results[0].latest.school.state
          })
-        // this.setState({ usState: data.results[0].latest.school.state })
       })
       .catch((error) => {
         console.log(error)
@@ -31,23 +29,16 @@ class App extends Component {
   }
   
   render() {
-    console.log(this.state.lists)
     return (
       <main className="App">
           <Navbar />
           <StateSelectionForm getSchoolsByState = {this.getSchoolsByState} />
-          {/* <SchoolContainer lists={this.state.lists} /> */}
-          <Route exact path='/:state' render={({match}) => {
-            return <SchoolContainer usState={match.params.state} lists={this.state.lists} />
+          <Route exact path='/:state' render={() => {
+            return <SchoolContainer lists={this.state.lists} />
            }}/>
-   
-      
-          {/* <Route exact path="/:list.id" render={({match}) => {
-            <SchoolDetailPage 
-              listId={match.params.list.id}
-              lists={this.state.lists}
-            />
-          }}/> */}
+          <Route exact path="/:state/:id" render={() => {
+            return <SchoolDetailPage lists={this.state.lists} />
+          }}/>
       </main>
     );
   }
