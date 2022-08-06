@@ -35,7 +35,7 @@ const SchoolContainer = ({ usState, lists, favorite, getFavoriteSchols }) => {
       ...favoriteSchoolsContainer,
       {...foundFavoriteSchool}
     ])
-    getFavoriteSchols(favoriteSchoolsContainer)
+    getFavoriteSchols(favoriteSchoolsContainer);
   }
 
   const returnSchoolCards = () => {

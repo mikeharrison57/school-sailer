@@ -26,7 +26,7 @@ const NavBar = () => {
             <label>Home</label>
           </div>
         </Link>
-        {/* <Link to=':favorites'> */}
+        <Link to='/favorites'>
           <div className='favorites-container'>
             <img
               className='favorites' 
@@ -34,7 +34,7 @@ const NavBar = () => {
             />
             <label>Favorites</label>
           </div>
-        {/* </Link> */}
+        </Link>
       </article>
     </header>
   )
