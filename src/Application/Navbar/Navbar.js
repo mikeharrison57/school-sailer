@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SailBoat from '../assets/sailboat.png';
 import HomeIcon from '../assets/home-icon.png';
 import Favorites from '../assets/favorites-navbar.png';
@@ -16,14 +17,15 @@ const NavBar = () => {
         <h1>School Sailor</h1>
       </article>
       <article className='home-favorites'>
-        <div className='home-container'>
-         
-          <img
-            className='home' 
-            src={HomeIcon}
-          /> 
-           <label>Home</label>
-        </div>
+        <Link to='/'>
+          <div className='home-container'> 
+            <img
+              className='home' 
+              src={HomeIcon}
+            /> 
+            <label>Home</label>
+          </div>
+        </Link>
         <div className='favorites-container'>
           <img
             className='favorites' 
