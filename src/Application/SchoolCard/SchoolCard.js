@@ -7,11 +7,14 @@ import './SchoolCard.css'
 
 const SchoolCard = ({ school, addFavoriteSchools, favorite, costPerYear }) => {
 
+  // const[toggle, setToggle] = useState(false);
+
   const submitFavorites = () => {
     if (!favorite) {
-      favorite = true
+      favorite = true;  
       addFavoriteSchools(school);
-  }
+    }
+    // setToggle(toggle => !toggle);
 }
 
   return (
@@ -20,7 +23,7 @@ const SchoolCard = ({ school, addFavoriteSchools, favorite, costPerYear }) => {
       <header>
         <img 
           onClick={() => submitFavorites()}
-          src={favorite ? FavoriteIcon : BeforeFavoriteIcon} 
+          src={BeforeFavoriteIcon} 
           alt='before-favorite-icon' 
         />
       </header>

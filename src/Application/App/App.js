@@ -3,7 +3,7 @@ import { fetchSchoolsInfo } from '../api-call';
 import Navbar from '../Navbar/Navbar';
 import StateSelectionForm from '../StateForm/StateSelectionForm';
 import SchoolContainer from '../SchoolContainer/SchoolContainer'
-import FavoriteSchools from '../FavoriteSchools/FavoriteSchools';
+// import FavoriteSchools from '../FavoriteSchools/FavoriteSchools';
 import SchoolDetailPage from '../SchoolDetailPage/SchoolDetailPage'
 import { Route } from 'react-router-dom'
 import './App.css';
@@ -29,13 +29,6 @@ class App extends Component {
       })
   }
 
-  // addFavoriteSchools = school => {
-  //   const foundFavoriteSchool = this.state.lists.find(list => list.latest.school === school)
-   
-  //   console.log(foundFavoriteSchool)
-  //   this.setState({favorites: [...this.state.favorites, foundFavoriteSchool]})
-  // }
-
   render() {
     return (
       <main className="App">
@@ -52,7 +45,7 @@ class App extends Component {
               />
             )
            }}/>
-          <Route exact path="/:state/:schoolName" render={(match) => {
+          <Route path="/:state/:schoolName" render={(match) => {
             return <SchoolDetailPage schoolName={match.match.params.schoolName} lists={this.state.lists} />
           }}/>
       </main>

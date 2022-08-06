@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { fetchSchoolsInfo } from '../api-call';
 import SchoolCard from '../SchoolCard/SchoolCard'
+import { Route } from 'react-router-dom'
 import './SchoolContainer.css'
 
 const SchoolContainer = ({ usState, lists, favorite }) => {
@@ -29,7 +30,6 @@ const SchoolContainer = ({ usState, lists, favorite }) => {
   }
 
   const addFavoriteSchools = school => {
-    // console.log(stateInfo)
     const foundFavoriteSchool = stateInfo.find(list => list.latest.school === school);
     setFavoriteSchools([
       ...favoriteSchools,
@@ -52,9 +52,27 @@ const SchoolContainer = ({ usState, lists, favorite }) => {
     return schoolCards
   }
 
+  const returnFavoriteSchoolCards = () => {
+    const favoriteScholCards = favoriteSchools.map((list) => {
+      return (
+        <SchoolCard 
+          key={Math.random()} 
+          school={list.latest.school}
+          addFavoriteSchools={addFavoriteSchools}
+          costPerYear={list.latest.cost.attendance.academic_year}
+          favorite={favorite}
+        />
+      )
+    })
+    return favoriteScholCards
+  }
+
   return (
     <section className='school-container'>
       {console.log(favoriteSchools)}
+      <Route path="/:state/favorites" render= {() => {
+        {returnFavoriteSchoolCards()}
+      }}/>
       {returnSchoolCards()}
     </section>
   )
