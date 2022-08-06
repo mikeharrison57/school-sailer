@@ -5,10 +5,10 @@ import SchoolCard from '../SchoolCard/SchoolCard'
 import { Route } from 'react-router-dom'
 import './SchoolContainer.css'
 
-const SchoolContainer = ({ usState, lists, favorite }) => {
+const SchoolContainer = ({ usState, lists, favorite, getFavoriteSchols }) => {
 
   const [stateInfo, setStateInfo] = useState([]);
-  const [favoriteSchools, setFavoriteSchools] = useState([]);
+  const [favoriteSchoolsContainer, setFavoriteSchools] = useState([]);
 
   const maintainStateInfo = () => {
     fetchSchoolsInfo(usState)
@@ -32,9 +32,10 @@ const SchoolContainer = ({ usState, lists, favorite }) => {
   const addFavoriteSchools = school => {
     const foundFavoriteSchool = stateInfo.find(list => list.latest.school === school);
     setFavoriteSchools([
-      ...favoriteSchools,
+      ...favoriteSchoolsContainer,
       {...foundFavoriteSchool}
     ])
+    getFavoriteSchols(favoriteSchoolsContainer)
   }
 
   const returnSchoolCards = () => {
@@ -52,27 +53,23 @@ const SchoolContainer = ({ usState, lists, favorite }) => {
     return schoolCards
   }
 
-  const returnFavoriteSchoolCards = () => {
-    const favoriteScholCards = favoriteSchools.map((list) => {
-      return (
-        <SchoolCard 
-          key={Math.random()} 
-          school={list.latest.school}
-          addFavoriteSchools={addFavoriteSchools}
-          costPerYear={list.latest.cost.attendance.academic_year}
-          favorite={favorite}
-        />
-      )
-    })
-    return favoriteScholCards
-  }
+  // const returnFavoriteSchoolCards = () => {
+  //   const favoriteSchoolCards = favoriteSchools.map((list) => {
+  //     return (
+  //       <SchoolCard 
+  //         key={Math.random()} 
+  //         school={list.latest.school}
+  //         addFavoriteSchools={addFavoriteSchools}
+  //         costPerYear={list.latest.cost.attendance.academic_year}
+  //         favorite={favorite}
+  //       />
+  //     )
+  //   })
+  //   return favoriteSchoolCards
+  // }
 
   return (
     <section className='school-container'>
-      {console.log(favoriteSchools)}
-      <Route path="/:state/favorites" render= {() => {
-        {returnFavoriteSchoolCards()}
-      }}/>
       {returnSchoolCards()}
     </section>
   )

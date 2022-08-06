@@ -11,7 +11,7 @@ import './App.css';
 class App extends Component {
   state = {
     lists: [],
-    favorites: [],
+    favoriteSchoolsApp: [],
     favorite: false,
     error: false
   }
@@ -29,10 +29,14 @@ class App extends Component {
       })
   }
 
+  getFavoriteSchols = schools => {
+    this.setState({favoriteSchoolsApp: [...schools]})
+  }
+
   render() {
     return (
       <main className="App">
-        {/* {console.log(this.state.favorites)} */}
+        {console.log(this.state.favoriteSchoolsApp)}
           <Navbar />
           <StateSelectionForm getSchoolsByState = {this.getSchoolsByState} />
           <Route exact path='/:state' render={(match) => {
@@ -41,11 +45,11 @@ class App extends Component {
                 usState={match.match.params.state} 
                 lists={this.state.lists} 
                 favorite={this.state.favorite}
-                addFavoriteSchools={this.addFavoriteSchools}
+                getFavoriteSchols={this.getFavoriteSchols}
               />
             )
            }}/>
-          <Route path="/:state/:schoolName" render={(match) => {
+          <Route exact path="/:state/:schoolName" render={(match) => {
             return <SchoolDetailPage schoolName={match.match.params.schoolName} lists={this.state.lists} />
           }}/>
       </main>

@@ -26,13 +26,15 @@ const NavBar = () => {
             <label>Home</label>
           </div>
         </Link>
-        <div className='favorites-container'>
-          <img
-            className='favorites' 
-            src={Favorites}
-          />
-          <label>Favorites</label>
-        </div>
+        {/* <Link to=':favorites'> */}
+          <div className='favorites-container'>
+            <img
+              className='favorites' 
+              src={Favorites}
+            />
+            <label>Favorites</label>
+          </div>
+        {/* </Link> */}
       </article>
     </header>
   )
