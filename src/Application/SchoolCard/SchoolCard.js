@@ -9,24 +9,22 @@ const SchoolCard = ({ school, costPerYear }) => {
   
   const [favorited, setFavorite] = useState(false)
   // const [school] = useState(school)
-
   // const favoriteCollege = event => {
   //   event.target.setAttribute('src', FavoriteIcon);
   //   event.target.setAttribute('alt', 'favorite-icon');
   // }
 
-  useEffect(() => {
-    localStorage.setItem('favoritedSchool', JSON.stringify(school))
-  }, [school])
-
+  // useEffect(() => {
+  //   localStorage.setItem('favoritedSchool', JSON.stringify(school))
+  // }, [school])
 
   return (
     <article className='school-card'>
       <header>
         <img 
-          src={BeforeFavoriteIcon} 
+          onClick={() => setFavorite(notFavorite => !notFavorite)}
+          src={favorited ? FavoriteIcon : BeforeFavoriteIcon} 
           alt='before-favorite-icon' 
-          // onClick={event => favoriteCollege(event)}
         />
       </header>
       <h3>Name: {school.name} </h3>
