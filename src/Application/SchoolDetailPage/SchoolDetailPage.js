@@ -36,7 +36,7 @@ const SchoolDetailPage = ({ schoolName }) => {
   const getSchoolPrograms = () => {
     const listedSchoolPrograms = filterSchoolPrograms().map((program) => {
       return (
-        <li>{program}</li>
+        <li key={Math.random()}>{program}</li>
       )
     })
     return listedSchoolPrograms
@@ -50,7 +50,7 @@ const SchoolDetailPage = ({ schoolName }) => {
     return (
       <>
         <section className='school-detail-content'>
-          {/* {console.log(individualSchool.latest.programs.cip_4_digit)} */}
+          {console.log(individualSchool.latest.programs.cip_4_digit)}
           <header className='school-header'>
             <h2>{schoolName}</h2>
             {/* <img></img> */}
