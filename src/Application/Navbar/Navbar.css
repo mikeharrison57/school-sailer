@@ -1,5 +1,32 @@
+h1 {
+  color: #02C39A;
+  font-size: 2.25rem;
+  margin-left: .5rem;
+}
+
 .navbar {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #F0F3BD;
+}
+
+.heading,
+.home-favorites {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.home, 
+.favorites {
+  width: 3.5rem;
+}
+
+.home-container,
+.favorites-container {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
