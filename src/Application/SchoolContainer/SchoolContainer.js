@@ -1,24 +1,49 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { fetchSchoolsInfo } from '../api-call';
 import SchoolCard from '../SchoolCard/SchoolCard'
 import './SchoolContainer.css'
 
-const SchoolContainer = ({ lists }) => {
+const SchoolContainer = ({ usState, lists }) => {
 
-  const schoolCards = lists.map((list) => {
-    return (
-      <SchoolCard 
-        key={Math.random()} 
-        // id={list.latest.school.name}
-        school={list.latest.school} 
-        costPerYear={list.latest.cost.avg_net_price.overall}
-      />
-    )
-  })
+  const [stateInfo, setStateInfo] = useState([]);
+  // const [error, setError] = useState('');
+
+  const maintainStateInfo = () => {
+    fetchSchoolsInfo(usState)
+      .then(data => {
+        setStateInfo([ 
+          ...data.results,
+          ...stateInfo
+        ])
+      })
+    }
+    
+  useEffect(() => {
+    maintainStateInfo();
+    clearStateInfo();
+  }, [usState, lists])
+
+  const clearStateInfo = () => {
+    setStateInfo([]);
+  }
+
+  const returnSchoolCards = () => {
+    const schoolCards = stateInfo.map((list) => {
+      return (
+        <SchoolCard 
+          key={Math.random()} 
+          school={list.latest.school} 
+          costPerYear={list.latest.cost.attendance.academic_year}
+        />
+      )
+    })
+    return schoolCards
+  }
   
   return (
     <section className='school-container'>
-      {schoolCards}
+      {returnSchoolCards()}
     </section>
   )
 }
@@ -26,5 +51,5 @@ const SchoolContainer = ({ lists }) => {
 export default SchoolContainer;
 
 SchoolContainer.propTypes = {
-  lists: PropTypes.array.isRequired
+  usState: PropTypes.string.isRequired
 };
