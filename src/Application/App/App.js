@@ -32,7 +32,6 @@ class App extends Component {
           <Navbar />
           <StateSelectionForm getSchoolsByState = {this.getSchoolsByState} />
           <Route exact path='/:state' render={(match) => {
-            console.log(match.match.params.state)
             return <SchoolContainer usState={match.match.params.state}  lists={this.state.lists} />
            }}/>
           <Route exact path="/:state/:schoolName" render={(match) => {

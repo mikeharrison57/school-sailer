@@ -12,7 +12,6 @@ const SchoolDetailPage = ({ schoolName, lists }) => {
   const getSchool = async () => {
     fetchIndividualSchool(schoolName)
       .then((data) => {
-        console.log(data.results[0])
         setSchool({
           ...data.results[0],
           ...individualSchool
@@ -33,7 +32,7 @@ const SchoolDetailPage = ({ schoolName, lists }) => {
     }, [])
     return filteredPrograms
   }
-  
+
   const getSchoolPrograms = () => {
     const listedSchoolPrograms = filterSchoolPrograms().map((program) => {
       return (
@@ -51,7 +50,7 @@ const SchoolDetailPage = ({ schoolName, lists }) => {
     return (
       <>
         <section className='school-detail-content'>
-          {console.log(individualSchool.latest.programs.cip_4_digit)}
+          {/* {console.log(individualSchool.latest.programs.cip_4_digit)} */}
           <header className='school-header'>
             <h2>{schoolName}</h2>
             {/* <img></img> */}
@@ -95,8 +94,7 @@ const SchoolDetailPage = ({ schoolName, lists }) => {
   }
 }
 
-// - Additional info includes, but isn't limited to: 
-// total cost, degrees/programs, retention rate, 
-// book costs, cost calculator, and website.
+// retention rate, 
+// cost calculator, and website.
 
 export default SchoolDetailPage;
