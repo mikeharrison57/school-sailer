@@ -51,5 +51,6 @@ const SchoolContainer = ({ usState, lists }) => {
 export default SchoolContainer;
 
 SchoolContainer.propTypes = {
-  usState: PropTypes.string.isRequired
+  usState: PropTypes.string.isRequired,
+  lists: PropTypes.array.isRequired
 };
