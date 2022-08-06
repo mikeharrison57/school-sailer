@@ -5,25 +5,22 @@ import BeforeFavoriteIcon from '../assets/before-favorite-icon.png';
 import FavoriteIcon from '../assets/favorite-icon.png';
 import './SchoolCard.css'
 
-const SchoolCard = ({ school, costPerYear }) => {
-  
-  const [favorited, setFavorite] = useState(false)
-  // const [school] = useState(school)
-  // const favoriteCollege = event => {
-  //   event.target.setAttribute('src', FavoriteIcon);
-  //   event.target.setAttribute('alt', 'favorite-icon');
-  // }
+const SchoolCard = ({ school, addFavoriteSchools, favorite, costPerYear }) => {
 
-  // useEffect(() => {
-  //   localStorage.setItem('favoritedSchool', JSON.stringify(school))
-  // }, [school])
+  const submitFavorites = () => {
+    if (!favorite) {
+      favorite = true
+      addFavoriteSchools(school);
+  }
+}
 
   return (
     <article className='school-card'>
+      {/* {console.log('line 35, card', school)} */}
       <header>
         <img 
-          onClick={() => setFavorite(notFavorite => !notFavorite)}
-          src={favorited ? FavoriteIcon : BeforeFavoriteIcon} 
+          onClick={() => submitFavorites()}
+          src={favorite ? FavoriteIcon : BeforeFavoriteIcon} 
           alt='before-favorite-icon' 
         />
       </header>
@@ -42,5 +39,6 @@ export default SchoolCard;
 
 SchoolCard.propTypes = {
   school: PropTypes.object.isRequired,
-  costPerYear: PropTypes.number
+  costPerYear: PropTypes.number,
+  // getFavoriteSchools: PropTypes.func.isRequired
 };

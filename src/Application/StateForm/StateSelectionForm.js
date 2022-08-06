@@ -22,11 +22,7 @@ const StateSelectionForm = ({ getSchoolsByState }) => {
   const submitStateInput = () => {
     getSchoolsByState(state);
   }
-
-  // const clearInput = () => {
-  //   setName('');
-  // }
-
+  
   return (
     <section className='form-section'>
         <form className='state-form'>

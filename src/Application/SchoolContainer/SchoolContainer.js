@@ -4,10 +4,10 @@ import { fetchSchoolsInfo } from '../api-call';
 import SchoolCard from '../SchoolCard/SchoolCard'
 import './SchoolContainer.css'
 
-const SchoolContainer = ({ usState, lists }) => {
+const SchoolContainer = ({ usState, lists, favorite }) => {
 
   const [stateInfo, setStateInfo] = useState([]);
-  // const [error, setError] = useState('');
+  const [favoriteSchools, setFavoriteSchools] = useState([]);
 
   const maintainStateInfo = () => {
     fetchSchoolsInfo(usState)
@@ -18,7 +18,7 @@ const SchoolContainer = ({ usState, lists }) => {
         ])
       })
     }
-    
+
   useEffect(() => {
     maintainStateInfo();
     clearStateInfo();
@@ -28,21 +28,33 @@ const SchoolContainer = ({ usState, lists }) => {
     setStateInfo([]);
   }
 
+  const addFavoriteSchools = school => {
+    // console.log(stateInfo)
+    const foundFavoriteSchool = stateInfo.find(list => list.latest.school === school);
+    setFavoriteSchools([
+      ...favoriteSchools,
+      {...foundFavoriteSchool}
+    ])
+  }
+
   const returnSchoolCards = () => {
     const schoolCards = stateInfo.map((list) => {
       return (
         <SchoolCard 
           key={Math.random()} 
-          school={list.latest.school} 
+          school={list.latest.school}
+          addFavoriteSchools={addFavoriteSchools}
           costPerYear={list.latest.cost.attendance.academic_year}
+          favorite={favorite}
         />
       )
     })
     return schoolCards
   }
-  
+
   return (
     <section className='school-container'>
+      {console.log(favoriteSchools)}
       {returnSchoolCards()}
     </section>
   )
