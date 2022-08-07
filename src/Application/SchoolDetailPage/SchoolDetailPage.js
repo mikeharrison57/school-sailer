@@ -1,9 +1,9 @@
-import { queryAllByPlaceholderText } from '@testing-library/react';
+import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { fetchIndividualSchool } from '../api-call';
 import './SchoolDetailPage.css';
 
-const SchoolDetailPage = ({ schoolName, lists }) => {
+const SchoolDetailPage = ({ schoolName }) => {
 
   const [individualSchool, setSchool] = useState({});
   // const [error, setError] = useState();
@@ -36,7 +36,7 @@ const SchoolDetailPage = ({ schoolName, lists }) => {
   const getSchoolPrograms = () => {
     const listedSchoolPrograms = filterSchoolPrograms().map((program) => {
       return (
-        <li>{program}</li>
+        <li key={Math.random()}>{program}</li>
       )
     })
     return listedSchoolPrograms
@@ -50,7 +50,7 @@ const SchoolDetailPage = ({ schoolName, lists }) => {
     return (
       <>
         <section className='school-detail-content'>
-          {/* {console.log(individualSchool.latest.programs.cip_4_digit)} */}
+          {console.log(individualSchool.latest.programs.cip_4_digit)}
           <header className='school-header'>
             <h2>{schoolName}</h2>
             {/* <img></img> */}
@@ -98,3 +98,7 @@ const SchoolDetailPage = ({ schoolName, lists }) => {
 // cost calculator, and website.
 
 export default SchoolDetailPage;
+
+SchoolDetailPage.propTypes = {
+  schoolName: PropTypes.string.isRequired
+};

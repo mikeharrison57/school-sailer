@@ -1,5 +1,41 @@
+h1 {
+  color: #02C39A;
+  font-size: 2.25rem;
+  margin-left: .5rem;
+}
+
 .navbar {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  background-color: #F0F3BD;
+  border-bottom: 1px solid black;
+}
+
+.heading,
+.home-favorites {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.home, 
+.favorites {
+  width: 3.5rem;
+}
+
+.home-container,
+.favorites-container {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-container:hover,
+.favorites-container:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: all .5s;
+  opacity: .8;
 }

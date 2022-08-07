@@ -1,15 +1,40 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import SailBoat from '../assets/sailboat.png';
+import HomeIcon from '../assets/home-icon.png';
+import Favorites from '../assets/favorites-navbar.png';
 import './Navbar.css'
 
 const NavBar = () => {
   return (
     <header className='navbar'>
-      <article>
+      <article className='heading'>
+        <img 
+          className='sailboat' 
+          src={SailBoat} 
+          alt='sailboat' 
+        />
         <h1>School Sailor</h1>
       </article>
-      <article>
-        <button>HOME</button>
-        <button>FAVORITES</button>
+      <article className='home-favorites'>
+        <Link to='/'>
+          <div className='home-container'> 
+            <img
+              className='home' 
+              src={HomeIcon}
+            /> 
+            <label>Home</label>
+          </div>
+        </Link>
+        <Link to='/state/chosen/favorites'>
+          <div className='favorites-container'>
+            <img
+              className='favorites' 
+              src={Favorites}
+            />
+            <label>Favorites</label>
+          </div>
+        </Link>
       </article>
     </header>
   )
