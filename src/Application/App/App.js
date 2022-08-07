@@ -50,6 +50,7 @@ class App extends Component {
                     lists={this.state.lists} 
                     favorite={this.state.favorite}
                     getFavoriteSchols={this.getFavoriteSchols}
+                    fetchError={this.state.error}
                   />
                 )
               }}/>

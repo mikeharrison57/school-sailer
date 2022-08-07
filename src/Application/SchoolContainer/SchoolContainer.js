@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { fetchSchoolsInfo } from '../utils/api-call';
-import SchoolCard from '../SchoolCard/SchoolCard'
 import { Route } from 'react-router-dom'
+import PropTypes from 'prop-types';
+import SchoolCard from '../SchoolCard/SchoolCard'
+import Error from '../Error/Error'
 import './SchoolContainer.css'
 
-const SchoolContainer = ({ usState, lists, favorite, getFavoriteSchols }) => {
+const SchoolContainer = ({ usState, lists, favorite, getFavoriteSchols, fetchError }) => {
 
   const [stateInfo, setStateInfo] = useState([]);
   const [favoriteSchoolsContainer, setFavoriteSchools] = useState([]);
@@ -17,6 +18,10 @@ const SchoolContainer = ({ usState, lists, favorite, getFavoriteSchols }) => {
           ...data.results,
           ...stateInfo
         ])
+      })
+      .catch((error) => {
+        console.log(error)
+        fetchError = true
       })
     }
 
@@ -53,11 +58,15 @@ const SchoolContainer = ({ usState, lists, favorite, getFavoriteSchols }) => {
     return schoolCards
   }
 
-  return (
-    <section className='school-container'>
-      {returnSchoolCards()}
-    </section>
-  )
+  if (fetchError) {
+    return <Error />
+  } else {
+    return (
+      <section className='school-container'>
+        {stateInfo.length? returnSchoolCards() : <h2>LOADING...</h2>}
+      </section>
+    )
+  }
 }
 
 export default SchoolContainer;
@@ -66,5 +75,6 @@ SchoolContainer.propTypes = {
   usState: PropTypes.string.isRequired,
   lists: PropTypes.array.isRequired,
   favorite: PropTypes.bool.isRequired,
-  getFavoriteSchols: PropTypes.func.isRequired
+  getFavoriteSchols: PropTypes.func.isRequired,
+  error: PropTypes.bool
 };
