@@ -1,25 +1,38 @@
-[
-  {
-        "city": "Grand Junction",
-        "name": "The Salon Professional Academy-Grand Junction",
-        "state": "CO",
-        "school_url": "grandjunctionbeautyschool.com/",
-        "program_year": 20140
+{
+  "metadata": {
+      "page": 0,
+      "total": 94,
+      "per_page": 20
   },
   {
+  "results": [
+    "latest": {
+    "school": {
+          "city": "Grand Junction",
+          "name": "The Salon Professional Academy-Grand Junction",
+          "state": "CO",
+          "school_url": "grandjunctionbeautyschool.com/",
+          "program_year": 20140
+  }
+  },
+  "latest": {
+  "school": {
         "city": "Boulder",
         "name": "University of Colorado Boulder",
         "state": "CO",
         "school_url": "www.colorado.edu/",
         "program_year": null
-  },
-  {
-   
-          "city": "Fort Collins",
-          "name": "Colorado State University-Fort Collins",
-          "state": "CO",
-          "school_url": "colostate.edu/",
-          "program_year": 30535
-      
   }
-]
+  },
+  "latest": {
+  "school": { 
+        "city": "Fort Collins",
+        "name": "Colorado State University-Fort Collins",
+        "state": "CO",
+        "school_url": "colostate.edu/",
+        "program_year": 30535
+        }  
+      }
+    ]
+  }
+}
