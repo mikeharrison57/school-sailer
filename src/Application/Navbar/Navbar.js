@@ -26,7 +26,7 @@ const NavBar = () => {
             <label>Home</label>
           </div>
         </Link>
-        <Link to='/favorites'>
+        <Link to='/state/chosen/favorites'>
           <div className='favorites-container'>
             <img
               className='favorites' 

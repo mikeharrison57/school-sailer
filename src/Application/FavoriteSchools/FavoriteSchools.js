@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SchoolCard from '../SchoolCard/SchoolCard';
 
 const FavoriteSchools = ({ favoriteSchools }) => {
 
+  // const [favorites, setFavorites] = 
   const returnFavoriteSchoolCards = () => {
     const favoriteSchoolCards = favoriteSchools.map((list) => {
       return (
