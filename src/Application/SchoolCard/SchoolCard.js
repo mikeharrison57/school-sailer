@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from 'react';
+// import React, { useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import BeforeFavoriteIcon from '../assets/before-favorite-icon.png';
@@ -14,12 +14,10 @@ const SchoolCard = ({ school, addFavoriteSchools, favorite, costPerYear }) => {
       favorite = true;  
       addFavoriteSchools(school);
     }
-    // setToggle(toggle => !toggle);
 }
 
   return (
     <article className='school-card'>
-      {/* {console.log('line 35, card', school)} */}
       <header>
         <img 
           onClick={() => submitFavorites()}
@@ -43,5 +41,6 @@ export default SchoolCard;
 SchoolCard.propTypes = {
   school: PropTypes.object.isRequired,
   costPerYear: PropTypes.number,
-  // getFavoriteSchools: PropTypes.func.isRequired
+  addFavoriteSchools: PropTypes.func.isRequired,
+  favorite: PropTypes.bool.isRequired
 };

@@ -39,15 +39,7 @@ class App extends Component {
           <Navbar />
           <StateSelectionForm getSchoolsByState = {this.getSchoolsByState} /> 
           <Switch>
-            {console.log(this.state.favoriteSchoolsApp)}
-            {/* <Route exact path="/" render={() => {
-            return (
-              <>
-                <Navbar />
-                <StateSelectionForm getSchoolsByState = {this.getSchoolsByState} /> 
-              </>
-            )
-           }}/> */}
+            {/* {console.log(this.state.favoriteSchoolsApp)} */}
             <Route exact path='/:state' render={(match) => {
               return (
                 <SchoolContainer 
@@ -86,6 +78,5 @@ class App extends Component {
     );
   }
 }
-
 
 export default App;

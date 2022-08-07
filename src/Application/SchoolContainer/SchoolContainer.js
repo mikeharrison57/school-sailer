@@ -53,21 +53,6 @@ const SchoolContainer = ({ usState, lists, favorite, getFavoriteSchols }) => {
     return schoolCards
   }
 
-  // const returnFavoriteSchoolCards = () => {
-  //   const favoriteSchoolCards = favoriteSchools.map((list) => {
-  //     return (
-  //       <SchoolCard 
-  //         key={Math.random()} 
-  //         school={list.latest.school}
-  //         addFavoriteSchools={addFavoriteSchools}
-  //         costPerYear={list.latest.cost.attendance.academic_year}
-  //         favorite={favorite}
-  //       />
-  //     )
-  //   })
-  //   return favoriteSchoolCards
-  // }
-
   return (
     <section className='school-container'>
       {returnSchoolCards()}
@@ -79,5 +64,7 @@ export default SchoolContainer;
 
 SchoolContainer.propTypes = {
   usState: PropTypes.string.isRequired,
-  lists: PropTypes.array.isRequired
+  lists: PropTypes.array.isRequired,
+  favorite: PropTypes.bool.isRequired,
+  getFavoriteSchols: PropTypes.func.isRequired
 };
