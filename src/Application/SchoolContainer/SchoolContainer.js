@@ -5,12 +5,13 @@ import SchoolCard from '../SchoolCard/SchoolCard';
 import Error from '../Error/Error';
 import './SchoolContainer.css';
 
-const SchoolContainer = ({ usState, lists, favorite, getFavoriteSchols, fetchError }) => {
+const SchoolContainer = ({ usState, lists, favorite, getFavoriteSchols }) => {
 
   const [stateInfo, setStateInfo] = useState([]);
   const [favoriteSchoolsContainer, setFavoriteSchools] = useState([]);
+  const [error, setError] = useState(false);
 
-  const maintainStateInfo = () => {
+  const maintainStateInfo = async () => {
     fetchSchoolsInfo(usState)
       .then(data => {
         setStateInfo([ 
@@ -20,7 +21,7 @@ const SchoolContainer = ({ usState, lists, favorite, getFavoriteSchols, fetchErr
       })
       .catch((error) => {
         console.log(error)
-        fetchError = true
+        setError(true)
       })
     }
 
@@ -57,7 +58,7 @@ const SchoolContainer = ({ usState, lists, favorite, getFavoriteSchols, fetchErr
     return schoolCards
   }
 
-  if (fetchError) {
+  if (error) {
     return <Error />
   } else {
     return (
@@ -74,6 +75,5 @@ SchoolContainer.propTypes = {
   usState: PropTypes.string.isRequired,
   lists: PropTypes.array.isRequired,
   favorite: PropTypes.bool.isRequired,
-  getFavoriteSchols: PropTypes.func.isRequired,
-  error: PropTypes.bool
+  getFavoriteSchols: PropTypes.func.isRequired
 };

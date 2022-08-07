@@ -17,7 +17,7 @@ class App extends Component {
     error: false
   }
 
-  getSchoolsByState = state => {
+  getSchoolsByState = async state => {
     fetchSchoolsInfo(state)
       .then(data => {
         this.setState({ 
@@ -50,7 +50,6 @@ class App extends Component {
                     lists={this.state.lists} 
                     favorite={this.state.favorite}
                     getFavoriteSchols={this.getFavoriteSchols}
-                    fetchError={this.state.error}
                   />
                 )
               }}/>
@@ -73,7 +72,7 @@ class App extends Component {
                   return (
                     <SchoolDetailPage 
                       schoolName={match.match.params.schoolName} 
-                      lists={this.state.lists} 
+                      lists={this.state.lists}              
                     />
                   ) 
                 }}/>
