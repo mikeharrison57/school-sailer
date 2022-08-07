@@ -19,12 +19,27 @@ describe('main page', () => {
     cy.get('select').select('Wyoming').should('contain', 'Wyoming').should('have.value', 'WY' )
   })
 
-  it.skip('Should be able to navigate to a school page based on user state selection.', () => {
+  it.skip('Should be able to navigate to a different school pages based on user state selection.', () => {
     cy.get('form').get('input').type('Kim').should('have.value', 'Kim')
     cy.get('select').select('Colorado')
     cy.get('.user-name').should('have.text', 'Welcome Kim! Set sail on a school adventure today ⛵️')
     cy.get('.state-button').click()
     cy.intercept('GET', `${primaryUrl}school.state=CO&${secureKey}`, {fixture: 'colorado-schools'})
     cy.url().should('eq', 'http://localhost:3000/CO')
+    cy.get('select').select('Maine')
+    cy.get('.state-button').click()
+    cy.url().should('eq', 'http://localhost:3000/ME')
+  })
+
+  it('Should be able to navigate back home from school page by clicking home button in the Navbar or back button in the window.', () => {
+    cy.get('form').get('input').type('Gustavo')
+    cy.get('select').select('Arizona')
+    cy.get('.state-button').click()
+    cy.url().should('eq', 'http://localhost:3000/AZ')
+    cy.get('.home-container').click()
+    cy.url().should('eq', 'http://localhost:3000/')
+    cy.get('select').select('West Virginia')
+    cy.get('.state-button').click()
+    cy.go('back').url().should('eq', 'http://localhost:3000/')
   })
 })
