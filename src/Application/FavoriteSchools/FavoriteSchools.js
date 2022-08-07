@@ -21,6 +21,7 @@ const FavoriteSchools = ({ favoriteSchools }) => {
 
   return (
     <section>
+      {console.log(favoriteSchools)}
       {favoriteSchools.length ? returnFavoriteSchoolCards() : <h2>No Favorites Yet!</h2>}
     </section>
   )

@@ -59,4 +59,15 @@ describe('state pages', () => {
     cy.go('back').url('should.eq', 'http://localhost:3000/NY')
   })
 
+  it('Should be able to add favorite schools to the favorites page, and navigate there to see the favorites.', () => {
+    cy.intercept('GET', `${primaryUrl}school.state=TX&${secureKey}`)
+    cy.visit('http://localhost:3000/TX')
+    cy.get('.school-container > :nth-child(17)').find('h3').should('have.text', 'Name: Baylor University')
+    cy.get(':nth-child(17) > header > .favorite-button').click()
+    cy.get('.school-container > :nth-child(3)').find('p').first().should('have.text', 'City: Amarillo, TX')
+    cy.get(':nth-child(3) > header > .favorite-button').click()
+    cy.get('.favorites-container').click()
+    cy.url('should.eq', 'http://localhost:3000/state/chosen/favorites')
+    cy.get('.school-card').find('h3').should('have.text', 'Name: Baylor University')
+  })
 })

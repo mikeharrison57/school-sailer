@@ -42,6 +42,6 @@ export default SchoolCard;
 SchoolCard.propTypes = {
   school: PropTypes.object.isRequired,
   costPerYear: PropTypes.number,
-  addFavoriteSchools: PropTypes.func.isRequired,
-  favorite: PropTypes.bool.isRequired
+  addFavoriteSchools: PropTypes.func,
+  favorite: PropTypes.bool
 };
