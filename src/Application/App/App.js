@@ -13,7 +13,6 @@ class App extends Component {
   state = {
     lists: [],
     favoriteSchoolsApp: [],
-    favorite: false,
     error: false
   }
 
@@ -30,26 +29,25 @@ class App extends Component {
       })
   }
 
-  getFavoriteSchols = schools => {
+  getFavoriteSchools = schools => {
     this.setState({favoriteSchoolsApp: [...schools]})
   }
 
   render() {
     return (
       <>
+      {console.log('favoriteSchoolsApp, line 40', this.state.favoriteSchoolsApp)}
       {this.state.error ? <Error /> :
         <main className="App">
             <Navbar />
             <StateSelectionForm getSchoolsByState = {this.getSchoolsByState} /> 
             <Switch>
-              {/* {console.log(this.state.favoriteSchoolsApp)} */}
               <Route exact path='/:state' render={(match) => {
                 return (
                   <SchoolContainer 
                     usState={match.match.params.state} 
-                    lists={this.state.lists} 
-                    favorite={this.state.favorite}
-                    getFavoriteSchols={this.getFavoriteSchols}
+                    lists={this.state.lists}
+                    getFavoriteSchools={this.getFavoriteSchools}
                   />
                 )
               }}/>

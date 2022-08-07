@@ -1,20 +1,16 @@
-// import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import BeforeFavoriteIcon from '../assets/before-favorite-icon.png';
 import FavoriteIcon from '../assets/favorite-icon.png';
 import './SchoolCard.css'
 
-const SchoolCard = ({ school, addFavoriteSchools, favorite, costPerYear }) => {
-
-  // const[toggle, setToggle] = useState(false);
-
+const SchoolCard = ({ school, addFavoriteSchools, costPerYear, favoriteSchools }) => {
+  
   const submitFavorites = () => {
-    if (!favorite) {
-      favorite = true;  
-      addFavoriteSchools(school);
-    }
-}
+    school.isFavorited = true
+    addFavoriteSchools(school);
+  }
 
   return (
     <article className='school-card'>
@@ -22,7 +18,7 @@ const SchoolCard = ({ school, addFavoriteSchools, favorite, costPerYear }) => {
         <img
           className='favorite-button' 
           onClick={() => submitFavorites()}
-          src={BeforeFavoriteIcon} 
+          src={favoriteSchools ? BeforeFavoriteIcon : FavoriteIcon} 
           alt='before-favorite-icon' 
         />
       </header>
@@ -43,5 +39,5 @@ SchoolCard.propTypes = {
   school: PropTypes.object.isRequired,
   costPerYear: PropTypes.number,
   addFavoriteSchools: PropTypes.func,
-  favorite: PropTypes.bool
+  favoriteSchools: PropTypes.array
 };
