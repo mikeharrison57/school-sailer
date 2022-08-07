@@ -39,7 +39,13 @@ describe('state pages', () => {
     cy.get(':nth-child(8) > h3').should('have.text', 'Name: Ilisagvik College')
     cy.get(':nth-child(8) > :nth-child(4)').should('have.text', 'Average Cost of Attendance Per Year: Currently Unavailable')
     cy.get('.school-container > :nth-child(2) > :nth-child(3)').should('have.text', 'City: Palmer, AK')
-    
+  })
+
+  it('Should have a favorite buttons and more info buttons on each school card', () => {
+    cy.intercept('GET', `${primaryUrl}school.state=MI&${secureKey}`)
+    cy.visit('http://localhost:3000/MI')
+    cy.get('.favorite-button').should('exist').should('have.length', 20)
+    cy.get('.more-info').should('exist').should('have.length', 20)
   })
 
 })

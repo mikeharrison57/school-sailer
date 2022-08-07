@@ -19,7 +19,8 @@ const SchoolCard = ({ school, addFavoriteSchools, favorite, costPerYear }) => {
   return (
     <article className='school-card'>
       <header>
-        <img 
+        <img
+          className='favorite-button' 
           onClick={() => submitFavorites()}
           src={BeforeFavoriteIcon} 
           alt='before-favorite-icon' 
