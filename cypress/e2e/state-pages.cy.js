@@ -6,7 +6,7 @@ describe('state pages', () => {
     cy.visit('http://localhost:3000')
   })
 
-  it.skip('Should have the heading School Sailor, a sailboat icon, home button, and favorites button in the Navbar.', () => {
+  it('Should have the heading School Sailor, a sailboat icon, home button, and favorites button in the Navbar.', () => {
     cy.intercept('GET', `${primaryUrl}school.state=CO&${secureKey}`)
     cy.visit('http://localhost:3000/CO')
     cy.get('h1').should('have.text', 'School Sailor')
@@ -15,7 +15,7 @@ describe('state pages', () => {
     cy.get('.favorites-container').should('exist')
   })
 
-  it.skip('Should fetch and display schools from user selected state', () => {
+  it('Should fetch and display schools from user selected state', () => {
     cy.get('select').select('Hawaii')
     cy.get('.state-button').click()
     cy.intercept('GET', `${primaryUrl}school.state=HI&${secureKey}`)
@@ -23,7 +23,7 @@ describe('state pages', () => {
     cy.get('.school-card').should('have.length', 20).should('not.be.empty')
   })
 
-  it.skip('Should have basic information about each school displayed on each school card', () => {
+  it('Should have basic information about each school displayed on each school card', () => {
     cy.intercept('GET', `${primaryUrl}school.state=WA&${secureKey}`)
     cy.visit('http://localhost:3000/WA')
     cy.get('.school-card').find('h3').first().should('have.text', 'Name: Charter College')
@@ -31,7 +31,7 @@ describe('state pages', () => {
     cy.get('.school-container > :nth-child(19)').should('exist').should('contain.text', 'Average Cost of Attendance Per Year: $14465')
   })
 
-  it.skip('Should be able to fetch and dispaly schools from a different state' , () => {
+  it('Should be able to fetch and dispaly schools from a different state' , () => {
     cy.intercept('GET', `${primaryUrl}school.state=AK&${secureKey}`)
     cy.visit('http://localhost:3000/AK')
     cy.get('.school-card').should('have.length', 9).should('not.be.empty')
@@ -41,14 +41,14 @@ describe('state pages', () => {
     cy.get('.school-container > :nth-child(2) > :nth-child(3)').should('have.text', 'City: Palmer, AK')
   })
 
-  it.skip('Should have a favorite buttons and more info buttons on each school card', () => {
+  it('Should have a favorite buttons and more info buttons on each school card', () => {
     cy.intercept('GET', `${primaryUrl}school.state=MI&${secureKey}`)
     cy.visit('http://localhost:3000/MI')
     cy.get('.favorite-button').should('exist').should('have.length', 20)
     cy.get('.more-info').should('exist').should('have.length', 20)
   })
 
-  it.skip('Should be able to navigate to school detail pages by clicking the More Info button on a school card', () => {
+  it('Should be able to navigate to school detail pages by clicking the More Info button on a school card', () => {
     cy.intercept('GET', `${primaryUrl}school.state=NY&${secureKey}`)
     cy.visit('http://localhost:3000/NY')
     cy.get('.more-info').first().click()
