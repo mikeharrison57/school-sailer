@@ -19,7 +19,7 @@ describe('state pages', () => {
     cy.get('select').select('Hawaii')
     cy.get('.state-button').click()
     cy.intercept('GET', `${primaryUrl}school.state=HI&${secureKey}`)
-    cy.url('should.eq', 'http://localhost:3000/HI')
+    cy.url().should('eq', 'http://localhost:3000/HI')
     cy.get('.school-card').should('have.length', 20).should('not.be.empty')
   })
 
@@ -56,7 +56,7 @@ describe('state pages', () => {
     cy.get('h2').should('have.text', 'Bais Binyomin Academy')
     cy.get('.degree-categories').should('contain', 'Theological and Ministerial Studies.')
     cy.get('.cost-info').should('contain', 'Campus Housing: $6150')
-    cy.go('back').url('should.eq', 'http://localhost:3000/NY')
+    cy.go('back').url().should('eq', 'http://localhost:3000/NY')
   })
 
   it('Should be able to add favorite schools to the favorites page, and navigate there to see the favorites.', () => {
@@ -67,7 +67,7 @@ describe('state pages', () => {
     cy.get('.school-container > :nth-child(3)').find('p').first().should('have.text', 'City: Amarillo, TX')
     cy.get(':nth-child(3) > header > .favorite-button').click()
     cy.get('.favorites-container').click()
-    cy.url('should.eq', 'http://localhost:3000/state/chosen/favorites')
+    cy.url().should('eq', 'http://localhost:3000/state/chosen/favorites')
     cy.get('.school-card').find('h3').should('have.text', 'Name: Baylor University')
   })
 })
