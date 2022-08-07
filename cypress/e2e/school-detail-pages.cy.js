@@ -35,5 +35,19 @@ describe('state pages', () => {
     cy.url().should('eq', 'http://localhost:3000/SC/Converse%20University')
   })
 
-  // it('Should be able to navigate to and invidual school ')
+  it('Should be able to navigate to and invidual school page and back to a state page', () => {
+    cy.intercept('GET', `${primaryUrl}school.state=NM&${secureKey}`)
+    cy.visit('http://localhost:3000/NM')
+    cy.get('.school-card').first().next().find('h3').should('have.text', 'Name: Olympian Academy of Cosmetology')
+    cy.get('.more-info').first().click()
+    cy.url().should('eq', 'http://localhost:3000/NM/Pima%20Medical%20Institute-Albuquerque')
+    cy.go('back').url().should('eq', 'http://localhost:3000/NM')
+  })
+  it('Should be able to navigate home if the Home button is clicked', () => {
+    cy.intercept('GET', `${primaryUrl}school.name=University%20of%20Alabama%20at%20Birmingham&${secureKey}`)
+    cy.visit('http://localhost:3000/AL/University%20of%20Alabama%20at%20Birmingham')
+    cy.get('.home-container').click()
+    cy.url().should('eq', 'http://localhost:3000')
+  })
+
 })
