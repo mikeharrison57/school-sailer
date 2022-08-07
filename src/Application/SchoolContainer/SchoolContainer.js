@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { fetchSchoolsInfo } from '../api-call';
+import { fetchSchoolsInfo } from '../utils/api-call';
 import SchoolCard from '../SchoolCard/SchoolCard'
 import { Route } from 'react-router-dom'
 import './SchoolContainer.css'

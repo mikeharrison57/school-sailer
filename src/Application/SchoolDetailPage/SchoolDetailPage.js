@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { fetchIndividualSchool } from '../api-call';
+import { fetchIndividualSchool } from '../utils/api-call';
 import './SchoolDetailPage.css';
 
 const SchoolDetailPage = ({ schoolName }) => {
