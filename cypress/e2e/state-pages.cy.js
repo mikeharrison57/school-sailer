@@ -41,11 +41,22 @@ describe('state pages', () => {
     cy.get('.school-container > :nth-child(2) > :nth-child(3)').should('have.text', 'City: Palmer, AK')
   })
 
-  it('Should have a favorite buttons and more info buttons on each school card', () => {
+  it.skip('Should have a favorite buttons and more info buttons on each school card', () => {
     cy.intercept('GET', `${primaryUrl}school.state=MI&${secureKey}`)
     cy.visit('http://localhost:3000/MI')
     cy.get('.favorite-button').should('exist').should('have.length', 20)
     cy.get('.more-info').should('exist').should('have.length', 20)
+  })
+
+  it.skip('Should be able to navigate to school detail pages by clicking the More Info button on a school card', () => {
+    cy.intercept('GET', `${primaryUrl}school.state=NY&${secureKey}`)
+    cy.visit('http://localhost:3000/NY')
+    cy.get('.more-info').first().click()
+    cy.url('should.eq', 'http://localhost:3000/NY/Bais%20Binyomin%20Academy')
+    cy.get('h2').should('have.text', 'Bais Binyomin Academy')
+    cy.get('.degree-categories').should('contain', 'Theological and Ministerial Studies.')
+    cy.get('.cost-info').should('contain', 'Campus Housing: $6150')
+    cy.go('back').url('should.eq', 'http://localhost:3000/NY')
   })
 
 })
