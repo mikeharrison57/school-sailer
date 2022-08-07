@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { fetchIndividualSchool } from '../api-call';
+import { fetchIndividualSchool } from '../utils/api-call';
+import Error from '../Error/Error'
 import './SchoolDetailPage.css';
 
 const SchoolDetailPage = ({ schoolName }) => {
 
   const [individualSchool, setSchool] = useState({});
-  // const [error, setError] = useState();
-  const [loading, setLoading] = useState(true);
-
+  const [error, setError] = useState(false);
+  
   const getSchool = async () => {
     fetchIndividualSchool(schoolName)
       .then((data) => {
@@ -16,6 +16,10 @@ const SchoolDetailPage = ({ schoolName }) => {
           ...data.results[0],
           ...individualSchool
         })
+      })
+      .catch((error) => {
+        console.log(error)
+        setError(true)
       })
     }
   
@@ -42,15 +46,14 @@ const SchoolDetailPage = ({ schoolName }) => {
     return listedSchoolPrograms
   }
 
-  if (!individualSchool.school) {
-    return (
-      <h2>LOADING...</h2>
-    )
+  if (error) {
+    return <Error />
   } else {
     return (
       <>
+        {!individualSchool.school ?  <h2>LOADING...</h2> : 
         <section className='school-detail-content'>
-          {console.log(individualSchool.latest.programs.cip_4_digit)}
+          {/* {console.log(individualSchool.latest.programs.cip_4_digit)} */}
           <header className='school-header'>
             <h2>{schoolName}</h2>
             {/* <img></img> */}
@@ -87,8 +90,7 @@ const SchoolDetailPage = ({ schoolName }) => {
               </ul>
             </article>
           </section>
-        </section>
-        {/* } */}
+        </section>}
       </>
     )
   }

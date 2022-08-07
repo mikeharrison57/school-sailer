@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import SchoolCard from '../SchoolCard/SchoolCard';
 
 const FavoriteSchools = ({ favoriteSchools }) => {
-
-  // const [favorites, setFavorites] = 
 
   const returnFavoriteSchoolCards = () => {
     const favoriteSchoolCards = favoriteSchools.map((list) => {
@@ -21,7 +19,7 @@ const FavoriteSchools = ({ favoriteSchools }) => {
 
   return (
     <section>
-      {console.log(favoriteSchools)}
+      {console.log('favorite Schools, line 24', favoriteSchools)}
       {favoriteSchools.length ? returnFavoriteSchoolCards() : <h2>No Favorites Yet!</h2>}
     </section>
   )
