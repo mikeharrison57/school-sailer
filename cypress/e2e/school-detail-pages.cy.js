@@ -47,7 +47,7 @@ describe('state pages', () => {
     cy.intercept('GET', `${primaryUrl}school.name=University%20of%20Alabama%20at%20Birmingham&${secureKey}`)
     cy.visit('http://localhost:3000/AL/University%20of%20Alabama%20at%20Birmingham')
     cy.get('.home-container').click()
-    cy.url().should('eq', 'http://localhost:3000')
+    cy.url().should('eq', 'http://localhost:3000/')
   })
-
+  
 })
