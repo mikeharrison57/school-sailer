@@ -7,11 +7,17 @@ describe('main page', () => {
     // cy.intercept('GET', `${primaryUrl}school.state=CO&${secureKey}`, {fixture: 'colorado-schools'})
   })
 
-  it('Should have the heading School Sailor in the navbar with a sailboat icon next to it.', () => {
+  it('Should have the heading School Sailor, a sailboat icon, home button, and favorites button in the Navbar.', () => {
     cy.get('h1').should('have.text', 'School Sailor')
     cy.get('.sailboat').should('be.visible')
+    cy.get('.home-container').should('exist')
+    cy.get('.favorites-container').should('exist')
   })
 
-  
+  it('Should have a form for the user to input their name and select a state from a list of all 50 US states.', () => {
+    cy.get('form').get('input').type('Jimmy').should('have.value', 'Jimmy')
+    cy.get('select').select('Alaska').should('contain', 'Alaska').should('have.value', 'AK' )
+    cy.get('select').select('Wyoming').should('contain', 'Wyoming').should('have.value', 'WY' )
+  })
 
 })
