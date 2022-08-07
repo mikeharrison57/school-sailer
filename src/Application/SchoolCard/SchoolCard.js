@@ -25,8 +25,8 @@ const SchoolCard = ({ school, addFavoriteSchools, favorite, costPerYear }) => {
           alt='before-favorite-icon' 
         />
       </header>
-      <h3>Name: {school.name} </h3>
-      <p>City: {school.city}, {school.state} </p>
+      <h3>Name: {school.name}</h3>
+      <p>City: {school.city}, {school.state}</p>
       {costPerYear ? <p>Average Cost of Attendance Per Year: ${costPerYear}</p> : <p>Average Cost of Attendance Per Year: Currently Unavailable</p>}
       {/* <a href={school.school_url}>Website</a> */}
       <Link to={`${school.state}/${school.name}`}>
