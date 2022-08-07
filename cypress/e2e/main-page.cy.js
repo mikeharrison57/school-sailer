@@ -4,7 +4,6 @@ const primaryUrl = 'https://api.data.gov/ed/collegescorecard/v1/schools.json?'
 describe('main page', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/')
-    // cy.intercept('GET', `${primaryUrl}school.state=CO&${secureKey}`, {fixture: 'colorado-schools'})
   })
 
   it('Should have the heading School Sailor, a sailboat icon, home button, and favorites button in the Navbar.', () => {
@@ -20,4 +19,12 @@ describe('main page', () => {
     cy.get('select').select('Wyoming').should('contain', 'Wyoming').should('have.value', 'WY' )
   })
 
+  it.skip('Should be able to navigate to a school page based on user state selection.', () => {
+    cy.get('form').get('input').type('Kim').should('have.value', 'Kim')
+    cy.get('select').select('Colorado')
+    cy.get('.user-name').should('have.text', 'Welcome Kim! Set sail on a school adventure today ⛵️')
+    cy.get('.state-button').click()
+    cy.intercept('GET', `${primaryUrl}school.state=CO&${secureKey}`, {fixture: 'colorado-schools'})
+    cy.url().should('eq', 'http://localhost:3000/CO')
+  })
 })
