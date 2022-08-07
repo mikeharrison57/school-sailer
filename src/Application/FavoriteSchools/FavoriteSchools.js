@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import SchoolCard from '../SchoolCard/SchoolCard';
 
 const FavoriteSchools = ({ favoriteSchools }) => {
 
   // const [favorites, setFavorites] = 
+
   const returnFavoriteSchoolCards = () => {
     const favoriteSchoolCards = favoriteSchools.map((list) => {
       return (
@@ -19,12 +21,14 @@ const FavoriteSchools = ({ favoriteSchools }) => {
 
   return (
     <section>
-      {returnFavoriteSchoolCards()}
+      {console.log(favoriteSchools)}
+      {favoriteSchools.length ? returnFavoriteSchoolCards() : <h2>No Favorites Yet!</h2>}
     </section>
   )
-
-
 }
 
-
 export default FavoriteSchools;
+
+FavoriteSchools.propTypes = {
+  favoriteSchools: PropTypes.array.isRequired
+};

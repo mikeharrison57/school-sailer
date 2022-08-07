@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from 'react';
+// import React, { useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import BeforeFavoriteIcon from '../assets/before-favorite-icon.png';
@@ -14,21 +14,20 @@ const SchoolCard = ({ school, addFavoriteSchools, favorite, costPerYear }) => {
       favorite = true;  
       addFavoriteSchools(school);
     }
-    // setToggle(toggle => !toggle);
 }
 
   return (
     <article className='school-card'>
-      {/* {console.log('line 35, card', school)} */}
       <header>
-        <img 
+        <img
+          className='favorite-button' 
           onClick={() => submitFavorites()}
           src={BeforeFavoriteIcon} 
           alt='before-favorite-icon' 
         />
       </header>
-      <h3>Name: {school.name} </h3>
-      <p>City: {school.city}, {school.state} </p>
+      <h3>Name: {school.name}</h3>
+      <p>City: {school.city}, {school.state}</p>
       {costPerYear ? <p>Average Cost of Attendance Per Year: ${costPerYear}</p> : <p>Average Cost of Attendance Per Year: Currently Unavailable</p>}
       {/* <a href={school.school_url}>Website</a> */}
       <Link to={`${school.state}/${school.name}`}>
@@ -43,5 +42,6 @@ export default SchoolCard;
 SchoolCard.propTypes = {
   school: PropTypes.object.isRequired,
   costPerYear: PropTypes.number,
-  // getFavoriteSchools: PropTypes.func.isRequired
+  addFavoriteSchools: PropTypes.func,
+  favorite: PropTypes.bool
 };

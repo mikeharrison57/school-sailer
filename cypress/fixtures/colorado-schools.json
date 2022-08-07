@@ -1,0 +1,32 @@
+[
+  {
+  "latest": {
+    "school": {
+        "city": "Grand Junction",
+        "name": "The Salon Professional Academy-Grand Junction",
+        "state": "CO",
+        "school_url": "grandjunctionbeautyschool.com/"
+      }
+    }
+  },
+  {
+  "latest": {
+    "school": {
+        "city": "Boulder",
+        "name": "University of Colorado Boulder",
+        "state": "CO",
+        "school_url": "www.colorado.edu/"
+      }
+    }
+  },
+  {
+  "latest": {
+      "school": {
+          "city": "Fort Collins",
+          "name": "Colorado State University-Fort Collins",
+          "state": "CO",
+          "school_url": "colostate.edu/"
+        }
+    }
+  }
+]

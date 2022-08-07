@@ -36,10 +36,10 @@ const StateSelectionForm = ({ getSchoolsByState }) => {
             {selectState()}
           </select>
           <Link to={`/${state}`}>
-            <button onClick={() => submitStateInput()}>SUBMIT</button>
+            <button className='state-button' onClick={() => submitStateInput()}>SUBMIT</button>
           </Link>
         </form>
-        {name && state ? <p>{`Welcome ${name}! Set sail on a school adventure today ⛵️`}</p> : <p></p>}
+        {name && state ? <p className='user-name'>{`Welcome ${name}! Set sail on a school adventure today ⛵️`}</p> : <p></p>}
     </section>
   )
 }
