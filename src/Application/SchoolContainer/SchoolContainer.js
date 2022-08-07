@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { fetchSchoolsInfo } from '../utils/api-call';
-import { Route } from 'react-router-dom'
 import PropTypes from 'prop-types';
-import SchoolCard from '../SchoolCard/SchoolCard'
-import Error from '../Error/Error'
-import './SchoolContainer.css'
+import SchoolCard from '../SchoolCard/SchoolCard';
+import Error from '../Error/Error';
+import './SchoolContainer.css';
 
 const SchoolContainer = ({ usState, lists, favorite, getFavoriteSchols, fetchError }) => {
 
