@@ -20,8 +20,10 @@ describe('favorites page', () => {
 
   it('Should be able to navigate to a state page and add favorites to the favorites page from the state page.', () => {
     cy.get('select').select('Minnesota').get('.state-button').click()
-    cy.get(':nth-child(4) > header > .favorite-button').dblclick()
     cy.get(':nth-child(4) > header > .favorite-button').click()
+    cy.get(':nth-child(10) > header > #favorite').click()
     cy.get('.favorites-container').click()
+    cy.get('.school-card').first().should('exist').should('contain', 'Name: American Indian OIC Inc')
+    cy.get('.school-card').last().should('exist').should('contain', 'Average Cost of Attendance Per Year: $20919')
   })
 })
