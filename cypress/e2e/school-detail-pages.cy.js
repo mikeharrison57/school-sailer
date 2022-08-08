@@ -24,7 +24,6 @@ describe('state pages', () => {
     cy.url().should('eq', 'http://localhost:3000/GA/Berry%20College')
     cy.get('.school-header').find('h2').should('have.text', 'Berry College')
     cy.get('.cost-info').should('contain', 'Campus Housing: $13370')
-    cy.get('.stats').should('contain', 'Admission Rate: 77.22 %' )
   })
 
   it('Should be able to fetch and display a different school based on user selection, and information about said different school.' , () => {
