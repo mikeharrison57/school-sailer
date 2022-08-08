@@ -26,4 +26,27 @@ describe('favorites page', () => {
     cy.get('.school-card').first().should('exist').should('contain', 'Name: American Indian OIC Inc')
     cy.get('.school-card').last().should('exist').should('contain', 'Average Cost of Attendance Per Year: $20919')
   })
+
+  it('Should be able to add a favorite school, go back to state page, and add another favorite school.', () => {
+    cy.get('select').select('Delaware').get('.state-button').click()
+    cy.get('.school-card').first().find('h3').should('have.text', 'Name: Margaret H Rollins School of Nursing at Beebe Medical Center')
+    cy.get('.favorite-button').first().click()
+    cy.get('.favorites-container').click()
+    cy.get('.school-card').find('h3').should('have.text', 'Name: Margaret H Rollins School of Nursing at Beebe Medical Center')
+    cy.go('back')
+    cy.get('.school-card').last().find('p').first().should('have.text', 'City: Wilmington, DE')
+    cy.get('.favorite-button').last().click()
+    cy.go('forward')
+    cy.get('.school-card').last().find('p').first().should('have.text', 'City: Wilmington, DE')
+  })
+
+  it.only('Should be able to navigate to individual school page from favorites page.', () => {
+    cy.get('select').select('Ohio').get('.state-button').click()
+    cy.get('.school-container > :nth-child(4)').find('.favorite-button').click()
+    cy.get('.favorites-container').click()
+    cy.get('.more-info').click()
+    cy.url().should('eq', 'http://localhost:3000/state/chosen/OH/University%20of%20Akron%20Main%20Campus')
+    cy.get('.school-header').should('contain', 'University of Akron Main Campus')
+    cy.go('back').url().should('eq', 'http://localhost:3000/state/chosen/favorites')
+  })
 })
