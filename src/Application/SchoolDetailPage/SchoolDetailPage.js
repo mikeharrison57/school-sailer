@@ -63,7 +63,7 @@ const SchoolDetailPage = ({ schoolName }) => {
             <img className='school-gif' src={University} />
             <h2>{schoolName}</h2>
             <p>City: {`${individualSchool.school.city}, ${individualSchool.school.state}`}</p>
-            <a href={individualSchool.school.school_url}>{individualSchool.school.school_url}</a>
+            <a href={`http://${individualSchool.school.school_url}`}>{individualSchool.school.school_url}</a>
           </header>
           <section className='primary-info'>
             <article className='degree-categories'>

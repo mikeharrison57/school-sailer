@@ -26,7 +26,7 @@ const SchoolCard = ({ school, addFavoriteSchools, costPerYear, favoriteSchools }
       <h3>Name: {school.name}</h3>
       <p>City: {school.city}, {school.state}</p>
       {costPerYear ? <p>Average Cost of Attendance Per Year: ${costPerYear}</p> : <p>Average Cost of Attendance Per Year: Currently Unavailable</p>}
-      <a className='website' href={school.school_url}>Website</a>
+      <a className='website' href={`http://${school.school_url}`} target="_blank" rel="noopener noreferrer">Website</a>
       <div>
         <Link to={`${school.state}/${school.name}`}>
           <button className='more-info'>See More Info</button>
