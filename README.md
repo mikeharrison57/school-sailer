@@ -6,14 +6,14 @@
 - [Abstract](#abstract)
 - [Deployed Link](#deployed-link])
 - [Illustrations](#illustrations)
-- [Technologies Used](#technologies-used)
-- [Application & Component Wireframes](#application-and-component-wireframes)
-- [Context and Features](#context-and-features)
+- [Application Wireframe and Component Architecture](#application-wireframe-and-component-architecture)
+- [Technology Stack](#technology-stack)
 - [User Stories](#user-stories)
+- [Context and Features](#context-and-features)
 - [Lessons Learned](#lessons-learned)
 - [Future Features](#future-features)
 - [Application Set-Up](#application-set-up)
-- [Contributor LinkedIns and GitHubs](#contributor-linkedin-and-github)
+- [Contributor LinkedIn and GitHub](#contributor-linkedin-and-github)
 - [Project Specs](#project-specs)
 
 ## Abstract
@@ -98,11 +98,14 @@ Some future features we’d like to add to this application are:
 
 7. When finished with the application, type `Control + C` in the terminal to stop running the application. 
 
-## Contributor LinkedIn’s
+
+## Contributor LinkedIn and GitHub
+
+### Contributor LinkedIn’s
  
 - [Michael Harrison: LinkedIn](https://www.linkedin.com/in/michael-j-harrison57/)    
 
-## Contributor GitHubs’s
+### Contributor GitHubs’s
 
 - [Michael Harrison: GitHub](https://github.com/mikeharrison57)     
 
