@@ -8,7 +8,7 @@ import './SchoolContainer.css';
 const SchoolContainer = ({ usState, lists, getFavoriteSchools }) => {
 
   const [stateInfo, setStateInfo] = useState([]);
-  const [favoriteSchoolsContainer, setFavoriteSchools] = useState([]);
+  // const [favoriteSchoolsContainer, setFavoriteSchools] = useState([]);
   const [error, setError] = useState(false);
 
   const maintainStateInfo = async () => {
@@ -34,13 +34,13 @@ const SchoolContainer = ({ usState, lists, getFavoriteSchools }) => {
     setStateInfo([]);
   }
 
-  const addFavoriteSchools = school => {
-    const foundFavoriteSchool = stateInfo.find(list => list.latest.school === school);
-    setFavoriteSchools([
-      {...foundFavoriteSchool},
-      ...favoriteSchoolsContainer
-    ])
-    getFavoriteSchools(favoriteSchoolsContainer);
+  const addFavoriteSchools = foundSchool => {
+    const foundFavoriteSchool = stateInfo.find(list => list.latest.school === foundSchool);
+    // setFavoriteSchools([
+    //   {...foundFavoriteSchool},
+    //   ...favoriteSchoolsContainer
+    // ])
+    getFavoriteSchools(foundFavoriteSchool);
   }
 
   const returnSchoolCards = () => {
@@ -53,7 +53,7 @@ const SchoolContainer = ({ usState, lists, getFavoriteSchools }) => {
           key={Math.random()} 
           school={list.latest.school}
           addFavoriteSchools={addFavoriteSchools}
-          favoriteSchools={favoriteSchoolsContainer}
+          // favoriteSchools={favoriteSchoolsContainer}
           costPerYear={list.latest.cost.attendance.academic_year}
         />
       )
@@ -66,7 +66,7 @@ const SchoolContainer = ({ usState, lists, getFavoriteSchools }) => {
   } else {
     return (
       <section className='school-container'>
-        {console.log('favoriteSchholsContainer, line 66', favoriteSchoolsContainer)}
+        {/* {console.log('favoriteSchholsContainer, line 66', favoriteSchoolsContainer)} */}
         {stateInfo.length? returnSchoolCards() : <h2>LOADING...</h2>}
       </section>
     )

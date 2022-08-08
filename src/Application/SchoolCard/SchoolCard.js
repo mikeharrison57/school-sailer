@@ -5,7 +5,7 @@ import BeforeFavoriteIcon from '../assets/before-favorite-icon.png';
 import FavoriteIcon from '../assets/favorite-icon.png';
 import './SchoolCard.css'
 
-const SchoolCard = ({ school, addFavoriteSchools, costPerYear, favoriteSchools }) => {
+const SchoolCard = ({ school, addFavoriteSchools, costPerYear }) => {
   
   const submitFavorites = () => {
     school.isFavorited = true
@@ -18,7 +18,7 @@ const SchoolCard = ({ school, addFavoriteSchools, costPerYear, favoriteSchools }
         <img
           className='favorite-button' 
           onClick={() => submitFavorites()}
-          src={favoriteSchools ? BeforeFavoriteIcon : FavoriteIcon} 
+          src={BeforeFavoriteIcon} 
           alt='before-favorite-icon' 
         />
       </header>

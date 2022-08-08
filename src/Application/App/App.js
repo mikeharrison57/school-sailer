@@ -29,8 +29,9 @@ class App extends Component {
       })
   }
 
-  getFavoriteSchools = schools => {
-    this.setState({favoriteSchoolsApp: [...schools]})
+  getFavoriteSchools = foundSchool => {
+    const foundFavoriteSchool = this.state.lists.find(list => list.latest.school)
+    this.setState({favoriteSchoolsApp: [...this.state.favoriteSchoolsApp, {...foundSchool}]})
   }
 
   render() {

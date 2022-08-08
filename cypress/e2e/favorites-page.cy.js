@@ -13,4 +13,15 @@ describe('favorites page', () => {
     cy.get('.favorites-container').should('exist')
   })
 
+  it('Should start empty by default, and inform the user that they currently have no favorites yet.', () => {
+    cy.get('.school-card').should('not.exist')
+    cy.get('h2').should('have.text', 'No Favorites Yet!')
+  })
+
+  it('Should be able to navigate to a state page and add favorites to the favorites page from the state page.', () => {
+    cy.get('select').select('Minnesota').get('.state-button').click()
+    cy.get(':nth-child(4) > header > .favorite-button').dblclick()
+    cy.get(':nth-child(4) > header > .favorite-button').click()
+    cy.get('.favorites-container').click()
+  })
 })
