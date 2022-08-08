@@ -6,6 +6,7 @@ import Books from '../assets/books.gif';
 import MathIcon from '../assets/math.gif';
 import Science from '../assets/science.gif';
 import Geography from '../assets/geography.gif';
+import MoneyBag from '../assets/money-bag.gif';
 import Error from '../Error/Error'
 import './SchoolDetailPage.css';
 
@@ -66,7 +67,6 @@ const SchoolDetailPage = ({ schoolName }) => {
           </header>
           <section className='primary-info'>
             <article className='degree-categories'>
-         
                 <div className='program-heading-container'>
                   <p className='program-heading'>Programs Offered</p>
                   <img className='major-icons' src={MathIcon} />
@@ -79,8 +79,10 @@ const SchoolDetailPage = ({ schoolName }) => {
               </ul>
             </article>
             <article className='cost-info'>
-              {/* <img></img> */}
-              <p>Average Costs:</p>
+              <div className='cost-header'>
+                <p>Average Costs</p>
+                <img className='money-bag' src={MoneyBag} />
+              </div>
               <ul>
                 {individualSchool.latest.cost.tuition.in_state ? <li>Tuition: ${individualSchool.latest.cost.tuition.in_state}</li> 
                 : <li>Tuition: Currently Unavailable</li>}

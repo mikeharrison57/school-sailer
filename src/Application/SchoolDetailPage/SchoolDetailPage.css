@@ -5,7 +5,8 @@
 }
 
 .school-gif,
-.major-icons {
+.major-icons,
+.money-bag {
   width: 4rem;
   filter: brightness(5) invert(5);
 }
@@ -22,9 +23,11 @@
   font-size: 1.25rem;
   font-weight: bold;
   border-radius: 15%;
+  width: 70vw;
 }
 
-.degree-categories {
+.degree-categories,
+.cost-info {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,19 +37,34 @@
   color: black;
   border: 3px solid black;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.25rem;
   border-radius: 10%;
+  width: 65vw;
 }
 
 .programs-offered {
   padding: .5rem;
 }
 
-.program-heading-container {
+.program-heading-container,
+.cost-header {
   border-bottom: 3px solid black;
   font-size: 2rem;
   width: 30rem;
   display: flex;
   align-items: center;
 }
+
+.cost-header {
+  border-bottom: 3px solid black;
+  font-size: 2rem;
+  width: 30rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.cost-info {
+  font-size: 1.5rem;
+}
+
 
