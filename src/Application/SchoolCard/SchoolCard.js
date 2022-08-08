@@ -1,24 +1,25 @@
-import React, { useEffect, useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import BeforeFavoriteIcon from '../assets/before-favorite-icon.png';
 import FavoriteIcon from '../assets/favorite-icon.png';
 import './SchoolCard.css'
 
-const SchoolCard = ({ school, addFavoriteSchools, costPerYear }) => {
-  
+const SchoolCard = ({ school, addFavoriteSchools, costPerYear, favoriteSchools }) => {
+
   const submitFavorites = () => {
-    school.isFavorited = true
     addFavoriteSchools(school);
   }
 
   return (
     <article className='school-card'>
       <header>
+        {console.log(favoriteSchools)}
         <img
+          id='favorite'
           className='favorite-button' 
           onClick={() => submitFavorites()}
-          src={BeforeFavoriteIcon} 
+          src={favoriteSchools ? BeforeFavoriteIcon : FavoriteIcon} 
           alt='before-favorite-icon' 
         />
       </header>

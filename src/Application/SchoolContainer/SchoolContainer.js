@@ -5,10 +5,9 @@ import SchoolCard from '../SchoolCard/SchoolCard';
 import Error from '../Error/Error';
 import './SchoolContainer.css';
 
-const SchoolContainer = ({ usState, lists, getFavoriteSchools }) => {
+const SchoolContainer = ({ usState, lists, getFavoriteSchools, favoriteSchools }) => {
 
   const [stateInfo, setStateInfo] = useState([]);
-  // const [favoriteSchoolsContainer, setFavoriteSchools] = useState([]);
   const [error, setError] = useState(false);
 
   const maintainStateInfo = async () => {
@@ -36,11 +35,8 @@ const SchoolContainer = ({ usState, lists, getFavoriteSchools }) => {
 
   const addFavoriteSchools = foundSchool => {
     const foundFavoriteSchool = stateInfo.find(list => list.latest.school === foundSchool);
-    // setFavoriteSchools([
-    //   {...foundFavoriteSchool},
-    //   ...favoriteSchoolsContainer
-    // ])
     getFavoriteSchools(foundFavoriteSchool);
+     
   }
 
   const returnSchoolCards = () => {
@@ -53,8 +49,8 @@ const SchoolContainer = ({ usState, lists, getFavoriteSchools }) => {
           key={Math.random()} 
           school={list.latest.school}
           addFavoriteSchools={addFavoriteSchools}
-          // favoriteSchools={favoriteSchoolsContainer}
           costPerYear={list.latest.cost.attendance.academic_year}
+          favoriteSchools={favoriteSchools}
         />
       )
     })
@@ -66,7 +62,6 @@ const SchoolContainer = ({ usState, lists, getFavoriteSchools }) => {
   } else {
     return (
       <section className='school-container'>
-        {/* {console.log('favoriteSchholsContainer, line 66', favoriteSchoolsContainer)} */}
         {stateInfo.length? returnSchoolCards() : <h2>LOADING...</h2>}
       </section>
     )
@@ -78,5 +73,6 @@ export default SchoolContainer;
 SchoolContainer.propTypes = {
   usState: PropTypes.string.isRequired,
   lists: PropTypes.array.isRequired,
-  getFavoriteSchols: PropTypes.func
+  getFavoriteSchols: PropTypes.func,
+  favoriteSchools: PropTypes.array
 };
