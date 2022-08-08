@@ -4,7 +4,7 @@
 
 - [Table of Contents](#table-of-contents)
 - [Abstract](#abstract)
-- [Deployed Link](#deployed-link])
+- [Deployed Link](#deployed-link)
 - [Illustrations](#illustrations)
 - [Application Wireframe and Component Architecture](#application-wireframe-and-component-architecture)
 - [Technology Stack](#technology-stack)
