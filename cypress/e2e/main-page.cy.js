@@ -19,7 +19,7 @@ describe('main page', () => {
     cy.get('select').select('Wyoming').should('contain', 'Wyoming').should('have.value', 'WY' )
   })
 
-  it.skip('Should be able to navigate to a different school pages based on user state selection.', () => {
+  it('Should be able to navigate to a different school pages based on user state selection.', () => {
     cy.get('form').get('input').type('Kim').should('have.value', 'Kim')
     cy.get('select').select('Colorado')
     cy.get('.user-name').should('have.text', 'Welcome Kim! Set sail on a school adventure today ⛵️')
@@ -41,5 +41,16 @@ describe('main page', () => {
     cy.get('select').select('West Virginia')
     cy.get('.state-button').click()
     cy.go('back').url().should('eq', 'http://localhost:3000/')
+  })
+
+  it('Should NOT GET school data if there is an error with the network request.', () => {
+    cy.request({
+      method: "GET",
+      url: `${primaryUrl}school.state=CO&${secureKey}`,
+      failOnStatusCode: false
+    }).then((response) => {
+      expect(response.status).to.eq(403)
+      expect(response.statusText).to.contain('Forbidden')
+    })
   })
 })

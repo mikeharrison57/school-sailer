@@ -29,8 +29,8 @@ class App extends Component {
       })
   }
 
-  getFavoriteSchools = schools => {
-    this.setState({favoriteSchoolsApp: [...schools]})
+  getFavoriteSchools = foundSchool => {
+    this.setState({favoriteSchoolsApp: [...this.state.favoriteSchoolsApp, {...foundSchool}]})
   }
 
   render() {
@@ -48,6 +48,7 @@ class App extends Component {
                     usState={match.match.params.state} 
                     lists={this.state.lists}
                     getFavoriteSchools={this.getFavoriteSchools}
+                    favoriteSchools={this.state.favoriteSchoolsApp}
                   />
                 )
               }}/>
