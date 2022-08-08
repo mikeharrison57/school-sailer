@@ -14,7 +14,6 @@ const SchoolCard = ({ school, addFavoriteSchools, costPerYear, favoriteSchools }
   return (
     <article className='school-card'>
       <header>
-        {console.log(favoriteSchools)}
         <img
           id='favorite'
           className='favorite-button' 

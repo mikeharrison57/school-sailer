@@ -1,5 +1,24 @@
+
 .school-detail-content {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.school-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: .5rem;
+  margin: 0;
+  background-color: #02C39A ;
+  color: black;
+  border: 3px solid black;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.school-gif {
+  width: 4rem;
+  filter: brightness(5) invert(5);
 }

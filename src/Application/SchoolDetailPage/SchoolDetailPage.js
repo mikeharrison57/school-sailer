@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { fetchIndividualSchool } from '../utils/api-call';
+import University from '../assets/university.gif';
 import Error from '../Error/Error'
 import './SchoolDetailPage.css';
 
@@ -53,12 +54,11 @@ const SchoolDetailPage = ({ schoolName }) => {
       <>
         {!individualSchool.school ?  <h2>LOADING...</h2> : 
         <section className='school-detail-content'>
-          {/* {console.log(individualSchool.latest.programs.cip_4_digit)} */}
           <header className='school-header'>
+            <img className='school-gif' src={University} />
             <h2>{schoolName}</h2>
-            {/* <img></img> */}
-            <p>{`${individualSchool.school.city}, ${individualSchool.school.state}`}</p>
-            {/* <a href={individualSchool.school.school_url}>{individualSchool.school.school_url}</a> */}
+            <p>City: {`${individualSchool.school.city}, ${individualSchool.school.state}`}</p>
+            <a href={individualSchool.school.school_url}>{individualSchool.school.school_url}</a>
           </header>
           <section className='primary-info'>
             <article className='degree-categories'>
@@ -95,9 +95,6 @@ const SchoolDetailPage = ({ schoolName }) => {
     )
   }
 }
-
-// retention rate, 
-// cost calculator, and website.
 
 export default SchoolDetailPage;
 

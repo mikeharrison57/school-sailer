@@ -36,7 +36,6 @@ class App extends Component {
   render() {
     return (
       <>
-      {console.log('favoriteSchoolsApp, line 40', this.state.favoriteSchoolsApp)}
       {this.state.error ? <Error /> :
         <main className="App">
             <Navbar />
