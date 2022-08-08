@@ -50,4 +50,14 @@ describe('state pages', () => {
     cy.url().should('eq', 'http://localhost:3000/')
   })
   
+  it('Should NOT GET school data if there is an error with the network request.', () => {
+    cy.request({
+      method: "GET",
+      url: `${primaryUrl}school.name=Converse%20University&${secureKey}`,
+      failOnStatusCode: false
+    }).then((response) => {
+      expect(response.status).to.eq(403)
+      expect(response.statusText).to.contain('Forbidden')
+    })
+  })
 })

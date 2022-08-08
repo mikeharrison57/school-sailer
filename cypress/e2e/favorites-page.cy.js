@@ -40,7 +40,7 @@ describe('favorites page', () => {
     cy.get('.school-card').last().find('p').first().should('have.text', 'City: Wilmington, DE')
   })
 
-  it.only('Should be able to navigate to individual school page from favorites page.', () => {
+  it('Should be able to navigate to individual school page from favorites page.', () => {
     cy.get('select').select('Ohio').get('.state-button').click()
     cy.get('.school-container > :nth-child(4)').find('.favorite-button').click()
     cy.get('.favorites-container').click()
@@ -48,5 +48,16 @@ describe('favorites page', () => {
     cy.url().should('eq', 'http://localhost:3000/state/chosen/OH/University%20of%20Akron%20Main%20Campus')
     cy.get('.school-header').should('contain', 'University of Akron Main Campus')
     cy.go('back').url().should('eq', 'http://localhost:3000/state/chosen/favorites')
+  })
+
+  it('Should NOT GET school data if there is an error with the network request.', () => {
+    cy.request({
+      method: "GET",
+      url: `${primaryUrl}school.state=CO&${secureKey}`,
+      failOnStatusCode: false
+    }).then((response) => {
+      expect(response.status).to.eq(403)
+      expect(response.statusText).to.contain('Forbidden')
+    })
   })
 })

@@ -68,6 +68,17 @@ describe('state pages', () => {
     cy.get(':nth-child(3) > header > .favorite-button').click()
     cy.get('.favorites-container').click()
     cy.url().should('eq', 'http://localhost:3000/state/chosen/favorites')
-    cy.get('.school-card').find('h3').should('have.text', 'Name: Baylor University')
+    cy.get('.school-card').find('h3').should('contain', 'Name: Baylor University')
+  })
+
+  it('Should NOT GET school data if there is an error with the network request.', () => {
+    cy.request({
+      method: "GET",
+      url: `${primaryUrl}school.state=CO&${secureKey}`,
+      failOnStatusCode: false
+    }).then((response) => {
+      expect(response.status).to.eq(403)
+      expect(response.statusText).to.contain('Forbidden')
+    })
   })
 })
