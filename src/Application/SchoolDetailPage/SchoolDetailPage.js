@@ -2,6 +2,10 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { fetchIndividualSchool } from '../utils/api-call';
 import University from '../assets/university.gif';
+import Books from '../assets/books.gif';
+import MathIcon from '../assets/math.gif';
+import Science from '../assets/science.gif';
+import Geography from '../assets/geography.gif';
 import Error from '../Error/Error'
 import './SchoolDetailPage.css';
 
@@ -41,7 +45,7 @@ const SchoolDetailPage = ({ schoolName }) => {
   const getSchoolPrograms = () => {
     const listedSchoolPrograms = filterSchoolPrograms().map((program) => {
       return (
-        <li key={Math.random()}>{program}</li>
+        <li className='programs-offered' key={Math.random()}>{program}</li>
       )
     })
     return listedSchoolPrograms
@@ -62,9 +66,15 @@ const SchoolDetailPage = ({ schoolName }) => {
           </header>
           <section className='primary-info'>
             <article className='degree-categories'>
-              {/* <img></img> */}
+         
+                <div className='program-heading-container'>
+                  <p className='program-heading'>Programs Offered</p>
+                  <img className='major-icons' src={MathIcon} />
+                  <img className='major-icons' src={Science} />
+                  <img className='major-icons' src={Geography} />
+                  <img className='major-icons' src={Books} />
+                </div>
               <ul>
-                <p>Programs Offered:</p>
                 {getSchoolPrograms()}
               </ul>
             </article>
@@ -78,15 +88,6 @@ const SchoolDetailPage = ({ schoolName }) => {
                 : <li>Books: Currently Unavailable</li>}
                  {individualSchool.latest.cost.roomboard.oncampus? <li>Campus Housing: ${individualSchool.latest.cost.roomboard.oncampus}</li> 
                 : <li>Campus Housing: Currently Unavailable</li>}
-              </ul>
-            </article>
-            <article className='stats'>
-              <p>Statistics:</p>
-              <ul>
-                {individualSchool.latest.admissions.admission_rate.overall ? <li>Admission Rate: {individualSchool.latest.admissions.admission_rate.overall * 100} %</li> 
-                : <li>Admission Rate: Currently Unavailable</li>}
-                {/* <li>Retention Rate:</li> */}
-                
               </ul>
             </article>
           </section>
