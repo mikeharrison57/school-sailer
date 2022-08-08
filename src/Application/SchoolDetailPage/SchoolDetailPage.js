@@ -1,6 +1,12 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { fetchIndividualSchool } from '../utils/api-call';
+import University from '../assets/university.gif';
+import Books from '../assets/books.gif';
+import MathIcon from '../assets/math.gif';
+import Science from '../assets/science.gif';
+import Geography from '../assets/geography.gif';
+import MoneyBag from '../assets/money-bag.gif';
 import Error from '../Error/Error'
 import './SchoolDetailPage.css';
 
@@ -40,7 +46,7 @@ const SchoolDetailPage = ({ schoolName }) => {
   const getSchoolPrograms = () => {
     const listedSchoolPrograms = filterSchoolPrograms().map((program) => {
       return (
-        <li key={Math.random()}>{program}</li>
+        <li className='programs-offered' key={Math.random()}>{program}</li>
       )
     })
     return listedSchoolPrograms
@@ -51,26 +57,32 @@ const SchoolDetailPage = ({ schoolName }) => {
   } else {
     return (
       <>
-        {!individualSchool.school ?  <h2>LOADING...</h2> : 
+        {!individualSchool.school ?  <h2 style={{textAlign: 'center'}}>LOADING...</h2> : 
         <section className='school-detail-content'>
-          {/* {console.log(individualSchool.latest.programs.cip_4_digit)} */}
           <header className='school-header'>
+            <img className='school-gif' src={University} />
             <h2>{schoolName}</h2>
-            {/* <img></img> */}
-            <p>{`${individualSchool.school.city}, ${individualSchool.school.state}`}</p>
-            {/* <a href={individualSchool.school.school_url}>{individualSchool.school.school_url}</a> */}
+            <p>City: {`${individualSchool.school.city}, ${individualSchool.school.state}`}</p>
+            <a href={individualSchool.school.school_url}>{individualSchool.school.school_url}</a>
           </header>
           <section className='primary-info'>
             <article className='degree-categories'>
-              {/* <img></img> */}
+                <div className='program-heading-container'>
+                  <p className='program-heading'>Programs Offered</p>
+                  <img className='major-icons' src={MathIcon} />
+                  <img className='major-icons' src={Science} />
+                  <img className='major-icons' src={Geography} />
+                  <img className='major-icons' src={Books} />
+                </div>
               <ul>
-                <p>Programs Offered:</p>
                 {getSchoolPrograms()}
               </ul>
             </article>
             <article className='cost-info'>
-              {/* <img></img> */}
-              <p>Average Costs:</p>
+              <div className='cost-header'>
+                <p>Average Costs</p>
+                <img className='money-bag' src={MoneyBag} />
+              </div>
               <ul>
                 {individualSchool.latest.cost.tuition.in_state ? <li>Tuition: ${individualSchool.latest.cost.tuition.in_state}</li> 
                 : <li>Tuition: Currently Unavailable</li>}
@@ -80,24 +92,12 @@ const SchoolDetailPage = ({ schoolName }) => {
                 : <li>Campus Housing: Currently Unavailable</li>}
               </ul>
             </article>
-            <article className='stats'>
-              <p>Statistics:</p>
-              <ul>
-                {individualSchool.latest.admissions.admission_rate.overall ? <li>Admission Rate: {individualSchool.latest.admissions.admission_rate.overall * 100} %</li> 
-                : <li>Admission Rate: Currently Unavailable</li>}
-                {/* <li>Retention Rate:</li> */}
-                
-              </ul>
-            </article>
           </section>
         </section>}
       </>
     )
   }
 }
-
-// retention rate, 
-// cost calculator, and website.
 
 export default SchoolDetailPage;
 

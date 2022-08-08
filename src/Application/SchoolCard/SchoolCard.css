@@ -3,7 +3,19 @@
   border: 3px solid black;
   padding: 10px;
   background-color: #F0F3BD;
-  /* #C2B280 */
+  color: #05668D;
+  font-size: 1.25rem;
+  margin: 1rem;
+}
+
+.school-gif {
+  width: 4rem;
+  filter: brightness(5) invert(5);
+}
+
+.more-info {
+  padding: .5rem;
+  margin-top: 1rem;
 }
 
 .more-info:hover {
@@ -11,4 +23,25 @@
   transform: scale(1.1);
   transition: all .3s;
   opacity: .8;
+}
+
+.favorite-button:hover {
+  background-color:orange;
+}
+
+.favorite-button:focus {
+  background-color:red;
+}
+
+.favorite-button:active{
+  background-color:green;
+}
+
+.favorite-button.selected{
+  color:red;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between
 }

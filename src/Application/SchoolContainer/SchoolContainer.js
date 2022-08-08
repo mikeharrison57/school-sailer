@@ -62,7 +62,7 @@ const SchoolContainer = ({ usState, lists, getFavoriteSchools, favoriteSchools }
   } else {
     return (
       <section className='school-container'>
-        {stateInfo.length? returnSchoolCards() : <h2>LOADING...</h2>}
+        {stateInfo.length? returnSchoolCards() : <h2 style={{textAlign: 'right'}}>LOADING...</h2>}
       </section>
     )
   }
