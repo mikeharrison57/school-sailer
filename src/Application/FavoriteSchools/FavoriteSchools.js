@@ -19,7 +19,7 @@ const FavoriteSchools = ({ favoriteSchools }) => {
 
   return (
     <section>
-      {favoriteSchools.length ? returnFavoriteSchoolCards() : <h2>No Favorites Yet!</h2>}
+      {favoriteSchools.length ? returnFavoriteSchoolCards() : <h2 style={{textAlign: 'center'}}>No Favorites Yet!</h2>}
     </section>
   )
 }

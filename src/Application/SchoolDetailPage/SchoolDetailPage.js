@@ -57,7 +57,7 @@ const SchoolDetailPage = ({ schoolName }) => {
   } else {
     return (
       <>
-        {!individualSchool.school ?  <h2>LOADING...</h2> : 
+        {!individualSchool.school ?  <h2 style={{textAlign: 'center'}}>LOADING...</h2> : 
         <section className='school-detail-content'>
           <header className='school-header'>
             <img className='school-gif' src={University} />
