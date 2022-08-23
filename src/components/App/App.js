@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { fetchSchoolsInfo } from '../utils/api-call';
 import { Route, Switch } from 'react-router-dom'
 import Navbar from '../Navbar/Navbar';
@@ -9,76 +9,75 @@ import SchoolDetailPage from '../SchoolDetailPage/SchoolDetailPage'
 import Error from '../Error/Error'
 import './App.css';
 
-class App extends Component {
-  state = {
-    lists: [],
-    favoriteSchoolsApp: [],
-    error: false
-  }
+const App = () => {
 
-  getSchoolsByState = async state => {
+const [lists, setLists] = useState([]);
+const [favoriteSchools, setFavoriteSchools] = useState([]);
+const [error, setError] = useState(false);
+
+  const getSchoolsByState = async state => {
     fetchSchoolsInfo(state)
       .then(data => {
-        this.setState({ 
-          lists: data.results
-         })
+        setLists([...lists, ...data.results])
       })
       .catch((error) => {
         console.log(error)
-        this.setState({ error: true })
+        setError(true)
       })
   }
 
-  getFavoriteSchools = foundSchool => {
-    this.setState({favoriteSchoolsApp: [...this.state.favoriteSchoolsApp, {...foundSchool}]})
+  const getFavoriteSchools = foundSchool => {
+    setFavoriteSchools([...favoriteSchools, {...foundSchool}])
   }
 
-  render() {
-    return (
-      <>
-      {this.state.error ? <Error /> :
-        <main className="App">
-            <Navbar />
-            <StateSelectionForm getSchoolsByState = {this.getSchoolsByState} /> 
-            <Switch>
-              <Route exact path='/:state' render={(match) => {
+  useEffect(() => {
+    getSchoolsByState();
+  }, [])
+  
+  return (
+    <>
+    {error ? <Error /> :
+      <main className="App">
+          <Navbar />
+          <StateSelectionForm getSchoolsByState = {getSchoolsByState} /> 
+          <Switch>
+            <Route exact path='/:state' render={(match) => {
+              return (
+                <SchoolContainer 
+                  usState={match.match.params.state} 
+                  lists={lists}
+                  getFavoriteSchools={getFavoriteSchools}
+                  favoriteSchools={favoriteSchools}
+                />
+              )
+            }}/>
+            <Route exact path="/state/chosen/favorites" render={() => {
                 return (
-                  <SchoolContainer 
-                    usState={match.match.params.state} 
-                    lists={this.state.lists}
-                    getFavoriteSchools={this.getFavoriteSchools}
-                    favoriteSchools={this.state.favoriteSchoolsApp}
+                  <FavoriteSchools 
+                    favoriteSchools={favoriteSchools}
                   />
-                )
+                ) 
               }}/>
-              <Route exact path="/state/chosen/favorites" render={() => {
-                  return (
-                    <FavoriteSchools 
-                      favoriteSchools={this.state.favoriteSchoolsApp}
-                    />
-                  ) 
-                }}/>
-              <Route exact path="/:state/:schoolName" render={(match) => {
-                  return (
-                    <SchoolDetailPage 
-                      schoolName={match.match.params.schoolName} 
-                      lists={this.state.lists} 
-                    />
-                  ) 
-                }}/>
-                <Route exact path="/state/chosen/:state/:schoolName" render={(match) => {
-                  return (
-                    <SchoolDetailPage 
-                      schoolName={match.match.params.schoolName} 
-                      lists={this.state.lists}              
-                    />
-                  ) 
-                }}/>
-            </Switch>
-        </main> } 
-      </>
-    );
-  }
+            <Route exact path="/:state/:schoolName" render={(match) => {
+                return (
+                  <SchoolDetailPage 
+                    schoolName={match.match.params.schoolName} 
+                    lists={lists} 
+                  />
+                ) 
+              }}/>
+              <Route exact path="/state/chosen/:state/:schoolName" render={(match) => {
+                return (
+                  <SchoolDetailPage 
+                    schoolName={match.match.params.schoolName} 
+                    lists={lists}              
+                  />
+                ) 
+              }}/>
+          </Switch>
+      </main> } 
+    </>
+  );
 }
 
 export default App;
