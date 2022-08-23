@@ -20,7 +20,7 @@ class App extends Component {
     fetchSchoolsInfo(state)
       .then(data => {
         this.setState({ 
-            lists: data.results
+          lists: data.results
          })
       })
       .catch((error) => {
