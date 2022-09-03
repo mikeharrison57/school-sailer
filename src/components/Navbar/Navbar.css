@@ -4,12 +4,19 @@ h1 {
   margin-left: .5rem;
 }
 
+h2,
+h3 {
+  color: #02C39A;
+  font-size: 1.5rem;
+  margin-right: 4rem;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #F0F3BD;
-  border-bottom: 1px solid black;
+  border-bottom: 3px solid black;
 }
 
 .heading,
@@ -17,6 +24,10 @@ h1 {
   display: flex;
   align-items: center;
   padding: 1rem;
+}
+
+.user-instruction {
+  text-align: center;
 }
 
 .home, 

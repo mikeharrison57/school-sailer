@@ -16,6 +16,10 @@ const NavBar = () => {
         />
         <h1>School Sailor</h1>
       </article>
+      <article className='user-instruction'>
+        <h2>Set sail on a school adventure today ⛵</h2>
+        <h3>Pick a state to get started!</h3>
+      </article>
       <article className='home-favorites'>
         <Link to='/'>
           <div className='home-container'> 
