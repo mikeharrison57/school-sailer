@@ -26,6 +26,11 @@
   width: 70vw;
 }
 
+.school-name {
+  color: black;
+  align-items: center;
+}
+
 .degree-categories,
 .cost-info {
   display: flex;

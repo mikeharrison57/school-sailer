@@ -19,6 +19,9 @@ const StateSelectionForm = ({ getSchoolsByState }) => {
     }
 
   const submitStateInput = () => {
+    if (!state) {
+      alert('Please select a valid state!')
+    }
     getSchoolsByState(state);
   }
   
@@ -26,6 +29,7 @@ const StateSelectionForm = ({ getSchoolsByState }) => {
     <section className='form-section'>
         <form className='state-form'>
           <select value={state} onChange={event => setState(event.target.value)} required>
+            <option value=''>--Please Select A State--</option>
             {selectState()}
           </select>
           <Link to={`/${state}`}>

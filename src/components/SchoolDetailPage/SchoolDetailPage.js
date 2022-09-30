@@ -61,7 +61,7 @@ const SchoolDetailPage = ({ schoolName }) => {
         <section className='school-detail-content'>
           <header className='school-header'>
             <img className='school-gif' src={University} />
-            <h2>{schoolName}</h2>
+            <h2 className='school-name'>{schoolName}</h2>
             <p>City: {`${individualSchool.school.city}, ${individualSchool.school.state}`}</p>
             <a href={`http://${individualSchool.school.school_url}`}>{individualSchool.school.school_url}</a>
           </header>
