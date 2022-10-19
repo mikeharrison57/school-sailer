@@ -1,14 +1,7 @@
 h1 {
   color: #02C39A;
   font-size: 2.25rem;
-  margin-left: .5rem;
-}
-
-h2,
-h3 {
-  color: #02C39A;
-  font-size: 1.5rem;
-  margin-right: 4rem;
+  padding: .5rem;
 }
 
 .navbar {
@@ -23,11 +16,10 @@ h3 {
 .home-favorites {
   display: flex;
   align-items: center;
-  padding: 1rem;
 }
 
-.user-instruction {
-  text-align: center;
+.heading {
+  margin-left: .5rem;
 }
 
 .home, 
