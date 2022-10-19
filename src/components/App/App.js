@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { fetchSchoolsInfo } from '../utils/api-call';
 import { Route, Switch } from 'react-router-dom'
 import Navbar from '../Navbar/Navbar';
+import Overview from '../Overview/Overview';
 import StateSelectionForm from '../StateForm/StateSelectionForm';
 import SchoolContainer from '../SchoolContainer/SchoolContainer'
 import FavoriteSchools from '../FavoriteSchools/FavoriteSchools';
@@ -41,6 +42,9 @@ const [error, setError] = useState(false);
           <Navbar />
           <StateSelectionForm getSchoolsByState = {getSchoolsByState} /> 
           <Switch>
+            <Route exact path='/'>
+              <Overview />
+            </Route>
             <Route exact path='/:state' render={(match) => {
               return (
                 <SchoolContainer 
