@@ -1,0 +1,12 @@
+.overview {
+  display: grid;
+  place-items: center;
+  border: 3px solid black;
+  background-color: #F0F3BD;
+  padding: 3rem;
+  color: black;
+  margin: 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 15%;
+}

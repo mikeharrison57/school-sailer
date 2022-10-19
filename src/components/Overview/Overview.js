@@ -1,6 +1,8 @@
+import './Overview.css'
+
 const Overview = () => {
 	return (
-		<p>
+		<p className='overview'>
 			You're the captain of your future! School Sailor is a casual college and
 			trade school browsing application. It’s meant for people who aren’t
 			entirely sure about what college or tradeschool they might be interested
