@@ -55,15 +55,21 @@
 .cost-header {
   border-bottom: 3px solid black;
   font-size: 2rem;
-  width: 30rem;
+  width: 50vw;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
+}
+
+.program-heading {
+  margin-right: .5rem;
 }
 
 .cost-header {
   border-bottom: 3px solid black;
   font-size: 2rem;
-  width: 30rem;
+  width: 55vw;
   display: flex;
   justify-content: space-evenly;
 }
