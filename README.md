@@ -22,7 +22,7 @@
 
 ## Deployed Link
 
-- Check out our application [here](https://school-sailor.herokuapp.com/) 
+- Check out my application [here](https://school-sailor.vercel.app/) 
 
 ## Illustrations
 
