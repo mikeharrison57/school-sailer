@@ -22,7 +22,7 @@
 
 ## Deployed Link
 
-- Check out my application [here](https://school-sailor.vercel.app/) 
+- Check out my application here: [_School Sailor_](https://school-sailor.vercel.app/) 
 
 ## Illustrations
 
